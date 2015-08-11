@@ -20,7 +20,7 @@ Running `grunt test` will run the unit tests with karma.
 set JAVA_HOME=C:\jdk1.7.0_25
 set JAVA_OPTS=-Xms512m -Xmx512m -XX:MaxPermSize=256m
 set no_proxy=127.0.0.1, localhost
-set PATH=%JAVA_HOME%\bin;%M3_HOME%\bin;%PATH%;C:\Tools\Git\bin;C:\Tools\nodejs;C:\Tools\Ruby21\bin;%APPDATA%\npm
+set PATH=%JAVA_HOME%\bin;%M3_HOME%\bin;%PATH%;C:\Tools\Ruby21\bin;%APPDATA%\npm
 d:
 cd D:\source\
 cmd
