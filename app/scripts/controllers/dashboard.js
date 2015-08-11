@@ -9,7 +9,5 @@
  */
 angular.module('hackathonApp')
   .controller('DashboardCtrl', function($scope){
-      // $scope.toggleSidenav = function(menuId) {
-      //   $mdSidenav(menuId).toggle();
-      // };
+      $scope.message = 'This is Dashboard page';
   });

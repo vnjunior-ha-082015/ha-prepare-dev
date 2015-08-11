@@ -8,8 +8,6 @@
  * Controller of the hackathonApp
  */
 angular.module('hackathonApp')
-  .controller('KnowhowCtrl', function($scope){
-      // $scope.toggleSidenav = function(menuId) {
-      //   $mdSidenav(menuId).toggle();
-      // };
+  .controller('KnowHowCtrl', function($scope){
+    $scope.message = 'This is know-how page';
   });

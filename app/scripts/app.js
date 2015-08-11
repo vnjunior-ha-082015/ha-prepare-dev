@@ -28,9 +28,9 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/route-management', {
+        templateUrl: 'views/route-management.html',
+        controller: 'RouteManagementCtrl'
       })
       .when('/dashboard', {
         templateUrl: 'views/dashboard.html',
