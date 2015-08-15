@@ -16,33 +16,57 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMaterial'
+    'ngMaterial',
+    'ui.router'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/home');
+    $stateProvider
+      .state('home',{
+        url: '/home',
+        templateUrl: 'views/home.html',
+        controller: ''
       })
-      .when('/yeo-page', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
+      .state('about',{
+        url: '/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/dashboard', {
+      .state('yeo-page',{
+        url: '/yeo-page',
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .state('dashboard',{
+        url: '/dashboard',
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl'
       })
-      .when('/know-how', {
+      .state('know-how',{
+        url: '/know-how',
         templateUrl: 'views/know-how.html',
         controller: 'KnowHowCtrl'
       })
-      .otherwise({
-        redirectTo: '/'
-      });
+      // .when('/', {
+      //   templateUrl: 'views/login.html',
+      //   controller: 'LoginCtrl'
+      // })
+      // .when('/yeo-page', {
+      //   templateUrl: 'views/main.html',
+      //   controller: 'MainCtrl'
+      // })
+      // .when('/about', {
+      //   templateUrl: 'views/about.html',
+      //   controller: 'AboutCtrl'
+      // })
+      // .when('/dashboard', {
+      //   templateUrl: 'views/dashboard.html',
+      //   controller: 'DashboardCtrl'
+      // })
+      // .when('/know-how', {
+      //   templateUrl: 'views/know-how.html',
+      //   controller: 'KnowHowCtrl'
+      // })
   })
   .config(function($mdIconProvider){
     $mdIconProvider
