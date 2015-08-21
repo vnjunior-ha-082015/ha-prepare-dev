@@ -1,1 +1,67 @@
-{{message}}
+<md-card class="trip-card" ng-repeat="trip in vm.listTrips">
+    <img ng-src="{{trip.avatarURL}}" class="avatar" alt="image caption">
+    <md-card-content>
+    <p class="fullname">{{trip.fullname}}</p>
+    <p class="trip-title">{{trip.tripName}}</p>
+    <div class="trip-description">
+        <div class="description-content">
+            <label ng-hide="isShowDetail">{{trip.description}}</label>
+            <md-button class="md-primary" ng-click="isShowDetail = true" ng-hide="isShowDetail">View detail</md-button>
+
+            <div ng-show="isShowDetail">
+                <label ng-repeat="testIndex in [0,1,2,3,4,5,6,7,8,9,10]">
+                    {{testIndex}} - {{trip.description}}
+                </label>
+            </div>
+            <md-button class="md-primary" ng-click="isShowDetail = false" ng-show="isShowDetail">Hide detail</md-button>
+
+        </div>
+    </div>
+    <div class="trip-info" layout="row">
+        <div flex="25">
+            <md-icon md-font-library="material-icons">attach_money</md-icon>
+            <label>{{trip.price}} {{trip.currency}}</label>
+        </div>
+        <div flex="25">
+            <md-icon md-font-library="material-icons">people</md-icon>
+            <label>{{trip.totalJoined}} / {{trip.totalMember}} </label>
+        </div>
+        <div flex="25">
+            <md-icon md-font-library="material-icons">schedule</md-icon>
+            <label>{{trip.fromDate}}</label>
+        </div>
+        <div flex="25">
+            <md-icon md-font-library="material-icons">schedule</md-icon>
+            <label>{{trip.toDate}}</label>
+        </div>
+    </div>
+    </md-card-content>
+    <md-card-footer ng-show="showCommentSection">
+        <md-list-item class="md-2-line" ng-repeat="comment in trip.comments">
+            <img ng-src="{{comment.avatarURL}}" class="md-avatar"/>
+            <div class="md-list-item-text">
+                <a href="#">{{comment.fullname}}</a>
+                <!-- <h3>{{comment.fullname}}</h3> -->
+                <p>{{comment.comment}}</p>
+            </div>
+        </md-list-item>
+        <md-input-container flex>
+            <label>Write your comment</label>
+            <textarea ng-model="comment" columns="1" md-maxlength="150"></textarea>
+        </md-input-container>
+    </md-card-footer>
+    <div class="md-actions" layout="row" layout-align="end center">
+        <!-- <md-button class="md-fab md-primary" aria-label="Comment button" ng-click="showCommentSection = true" ng-hide="showCommentSection">
+            <md-icon md-font-library="material-icons">message</md-icon>
+        </md-button> -->
+
+        <md-button class="md-fab md-primary" aria-label="{{showCommentSection?'Done':'Post comment'}} button" ng-click="showCommentSection = !showCommentSection">
+            <md-icon md-font-library="material-icons">{{showCommentSection?'done':'message'}}</md-icon>
+        </md-button>
+
+        <md-button class="md-fab md-primary" aria-label="Join button">
+            <!-- <md-icon md-svg-src="img/icons/cake.svg"></md-icon> -->
+            <md-icon md-font-library="material-icons">favorite</md-icon>
+        </md-button>
+    </div>
+</md-card>

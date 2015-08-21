@@ -40,17 +40,20 @@ angular
       .state('dashboard',{
         url: '/dashboard',
         templateUrl: 'views/dashboard.html',
-        controller: 'DashboardCtrl'
+        controller: 'DashboardCtrl',
+        controllerAs: 'vm'
       })
       .state('know-how',{
         url: '/know-how',
         templateUrl: 'views/know-how.html',
         controller: 'KnowHowCtrl'
       })
-      // .when('/', {
-      //   templateUrl: 'views/login.html',
-      //   controller: 'LoginCtrl'
-      // })
+      .state('login', {
+        url: '/',
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'vm'
+      });
       // .when('/yeo-page', {
       //   templateUrl: 'views/main.html',
       //   controller: 'MainCtrl'

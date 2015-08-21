@@ -12,6 +12,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
     <link rel="stylesheet" href="styles/material-icon.css">
     <!-- endbuild -->
      <!-- Angular Material CSS using GitCDN to load directly from `bower-material/master` -->
@@ -28,7 +29,7 @@
     <!-- Add your site or application content here -->
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
-        <div class="container">
+        <div class="container-fluid">
           <div class="navbar-header">
 
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
@@ -55,15 +56,15 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
       <div ui-view=""></div>
     </div>
 
-  <!--   <div class="footer">
-      <div class="container">
+    <div class="footer">
+      <div class="container-fluid">
         <p><span class="glyphicon glyphicon-heart"></span> from the hackathon with love</p>
       </div>
-    </div> -->
+    </div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -82,7 +83,6 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
@@ -93,7 +93,7 @@
     <!-- Angular Meterial dependencies -->
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
-    
+
 
     <!-- Angular Material Javascript now available via Google CDN; version 0.10 used here -->
     <script src="bower_components/angular-material/angular-material.js"></script>
@@ -106,7 +106,7 @@
         <script src="scripts/controllers/dashboard.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/know-how.js"></script>
-        <script src="scripts/controllers/route-management.js"></script>
+        <!-- <script src="scripts/controllers/route-management.js"></script> -->
         <!-- endbuild -->
 </body>
 </html>
