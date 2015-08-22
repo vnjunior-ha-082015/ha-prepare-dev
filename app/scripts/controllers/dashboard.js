@@ -17,7 +17,7 @@
           var vm = this;
           vm.message = 'Hellow Dashboard';
 
-          vm.listTrips = constant_listTrips;
+          vm.listTrips = angular.copy(constant_listTrips);
 
     }
 
