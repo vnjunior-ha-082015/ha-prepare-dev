@@ -3,7 +3,9 @@
  */
 
 angular.module('hackathonApp')
-  .controller('RouteController', function($scope){
+  .controller('RouteController', function($scope, commonShareService){
+
+
     // $scope.toggleSidenav = function(menuId) {
     //   $mdSidenav(menuId).toggle();
     // };

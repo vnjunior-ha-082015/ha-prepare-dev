@@ -10,9 +10,9 @@
     angular.module('hackathonApp')
       .service('commonShareService', commonShareService);
 
-    // commonShareService.$inject = ['$scope'];
+    commonShareService.$inject = ['$http'];
 
-    function commonShareService() {
+    function commonShareService($http) {
       var _staticTrips = [
           {
               avatarURL: 'images/avatar/jadlimcaco.jpg',
@@ -212,13 +212,22 @@
         ];
 
         return {
-            getInitTrips: getInitTrips
+          getInitTrips: getInitTrips,
+          getRoutes: getRoutes
+
         };
 
         //==================== Function declaration ====================
 
         function getInitTrips() {
             return angular.copy(_staticTrips);
+        }
+
+        function getRoutes(){
+          var promise = $http.get('/assets/routes.json');
+          return promise.then(function(response){
+            return response.data;
+          });
         }
 
     }

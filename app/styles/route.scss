@@ -39,4 +39,63 @@
   background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 }
+.routes{
+
+  .route-detail{
+    margin-left: 115px;
+    border-left: 2px solid blue;
+    &:last-child{
+      border-left: none;
+    }
+    .date-time{
+      display: inline-block;
+      color: rgb(63, 81, 181);
+      font-size: 20px;
+      margin-right: 10px;
+      margin-left: -115px;
+//      min-height: 150px;
+    }
+    .route{
+      display: inline-block;
+      vertical-align: middle;
+      width: 100px;
+      height: 100px;
+      padding-left: 3px;
+      .route-img{
+        background-image: url('../images/dubaides/DubaiMall.jpg');
+        width: 90px;
+        height: 90px;
+        background-size: cover;
+        border-radius: 50px;
+        border: 2px solid #3f51b5;
+      }
+    }
+    .route-time{
+      display: inline-block;
+    }
+    .route-name{
+      display: inline-block;
+      color: rgb(63, 81, 181);
+      font-size: 20px;
+      margin-left: 10px;
+    }
+    .destination-info{
+      display: inline-block;
+      min-height: 150px;
+      position: relative;
+      .more-info{
+        border: 1px solid rgb(160, 158, 158);
+        border-radius: 5px;
+        padding: 10px;
+        display: inline-flex;
+      }
+    }
+  }
+  .connection{
+    width: 1px;
+    height: 75px;
+    border-right: 2px solid rgb(63, 81, 181);
+    margin-left: 114px;
+  }
+}
 
