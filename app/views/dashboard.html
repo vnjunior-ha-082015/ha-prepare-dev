@@ -36,12 +36,11 @@
         </div>
     </div>
     </md-card-content>
-    <md-card-footer ng-show="showCommentSection">
-        <md-list-item class="md-2-line" ng-repeat="comment in trip.comments">
+    <md-card-footer class="comment-section" ng-show="showCommentSection">
+        <md-list-item class="md-2-line comment-record" ng-repeat="comment in trip.comments">
             <img ng-src="{{comment.avatarURL}}" class="md-avatar"/>
             <div class="md-list-item-text">
-                <a href="#">{{comment.fullname}}</a>
-                <!-- <h3>{{comment.fullname}}</h3> -->
+                <h3><a href="#">{{comment.fullname}}</a></h3>
                 <p>{{comment.comment}}</p>
             </div>
         </md-list-item>

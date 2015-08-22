@@ -11,13 +11,18 @@
     angular.module('hackathonApp')
       .controller('DashboardCtrl', DashboardCtrl);
 
-    DashboardCtrl.$inject = ['$scope'];
+    DashboardCtrl.$inject = ['$scope', 'commonShareService'];
 
-    function DashboardCtrl($scope){
+    function DashboardCtrl($scope, commonShareService){
           var vm = this;
           vm.message = 'Hellow Dashboard';
 
-          vm.listTrips = constant_listTrips;
+          activate();
+
+          //==================== Function declaration ====================
+          function activate(){
+            vm.listTrips = commonShareService.getInitTrips();
+          }
 
     }
 
