@@ -1,0 +1,33 @@
+.card-header {
+  position: relative;
+  .md-image-title{
+    position: absolute;
+    left: 20px;
+    bottom: 30px;
+    color: rgb(63, 60, 60);
+    text-shadow: 0 0 2px #fff;
+    -webkit-text-stroke: 1px white;
+  }
+  .md-image-label{
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 5px;
+    left: 20px;
+    text-decoration: underline;
+    color: #fff;
+  }
+}
+.trip-info{
+  i{
+    vertical-align: middle;
+  }
+  span{
+    vertical-align: middle;
+  }
+}
+.route-info-divider{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+

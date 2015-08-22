@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/dashboard.css">
     <link rel="stylesheet" href="styles/material-icon.css">
+    <link rel="stylesheet" href="styles/route.css">
     <!-- endbuild -->
      <!-- Angular Material CSS using GitCDN to load directly from `bower-material/master` -->
     <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
@@ -48,7 +49,7 @@
               <li class="active"><a href="#/">Login</a></li>
               <li><a ng-href="#/dashboard">dashboard</a></li>
               <li><a ng-href="#/know-how">know-how</a></li>
-              <li><a ng-href="#/route-management">Manage route</a></li>
+              <li><a ng-href="#/route">Manage route</a></li>
               <li><a ng-href="#/logout"  ng-show="loginInfo.fullname.length > 0">Logout</a></li>
             </ul>
 
@@ -123,6 +124,7 @@
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/logout.controller.js"></script>
         <script src="scripts/controllers/know-how.js"></script>
+        <script src="scripts/controllers/route.js"></script>
         <!-- <script src="scripts/controllers/route-management.js"></script> -->
         <!-- endbuild -->
 </body>
