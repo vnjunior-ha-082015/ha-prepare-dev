@@ -51,7 +51,8 @@ angular
       .state('route',{
         url: '/route',
         templateUrl: 'views/route-management.html',
-        controller: 'RouteController'
+        controller: 'RouteController',
+        controllerAs: 'vm'
       })
       .state('login', {
         url: '/',

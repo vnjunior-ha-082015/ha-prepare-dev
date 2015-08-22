@@ -1,0 +1,37 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Create your route</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="answer('not applicable')">
+        <md-icon md-font-library="material-icons">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content style="width:800px;height:810px; ">
+
+   <md-content layout-padding class="autoScroll">
+	  <md-input-container class="md-icon-float" >
+	    <!-- Use floating label instead of placeholder -->
+	    <label>Title</label>
+	    <input ng-model="routeModel.title" type="text">
+	  </md-input-container>
+	  <md-input-container class="md-icon-float" >
+	    <!-- Use floating label instead of placeholder -->
+	    <label>Description</label>
+	    <input ng-model="routeModel.description" type="text">
+	  </md-input-container>
+	</md-content>
+
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="answer('not useful')">
+     Not Useful
+    </md-button>
+    <md-button ng-click="answer('useful')" style="margin-right:20px;">
+      Useful
+    </md-button>
+  </div>
+  </form>
+</md-dialog>
