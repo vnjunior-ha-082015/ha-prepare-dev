@@ -1,4 +1,4 @@
-var constant_listTrips = [
+[
     {
         destination: 'Dubai Fountains',
         address: 'Financial Centre Road | Dubai Mall, Dubai, United Arab Emirates',
@@ -135,4 +135,4 @@ var constant_listTrips = [
         latt: ,
         photo: '.jpg'
     }
-  ];
+ ]

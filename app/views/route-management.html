@@ -1,10 +1,16 @@
 <md-card>
+  <md-button class="md-primary md-raised" ng-click="vm.createRoute($event)" flex flex-md="100">
+    Create your route
+  </md-button>
+</md-card>
+
+<md-card>
   <div class="card-header">
     <div class="pickgradient">
       <img src="images/dubaides/burjkhalifa.jpg" class="md-card-image" alt="Burj Khalifa" style="max-height: 250px">
     </div>
-    <h1 class="md-image-title">Burj Khalifa</h1>
-    <label class="md-image-label">HOSTED BY DAT NGUYEN</label>
+    <h1 class="md-image-title">{{vm.selectedRoute.title}}</h1>
+    <label class="md-image-label">HOSTED BY {{vm.selectedRoute.hostedBy}}</label>
   </div>
   <md-card-content>
     <div class="trip-info">
@@ -20,50 +26,14 @@
       <span>5/7 people joined</span>
     </div>
     <md-divider class="route-info-divider"></md-divider>
-    <div class="routes">
+    <div class="routes" ng-repeat="des in vm.selectedRoute.destinations">
         <div class="route-detail">
-          <div class="date-time">12:36</div>
+          <div class="date-time">{{des.time}}</div>
           <div class="route">
-            <div class="route-img"></div>
+            <div class="route-img" ng-style="vm.getDestinationImage(des.destinationId)" ></div>
           </div>
           <div class="destination-info" layout="row" style="width: 90%;">
-            <div class="route-name" flex="10">Dubai Mall</div>
-
-            <div class="more-info"  flex="85">
-              The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-              two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-              two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-              two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-              two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-            </div>
-          </div>
-        </div>
-        <!--<div class="connection"></div>-->
-        <div class="route-detail">
-          <div class="date-time">15:36</div>
-          <div class="route">
-            <div class="route-img"></div>
-          </div>
-          <div class="destination-info" layout="row" style="width: 90%;">
-            <div class="route-name" flex="10">Dubai Marina</div>
-
-            <div class="more-info" flex="85">
-              The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-              two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-              two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-              two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-              two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-            </div>
-          </div>
-        </div>
-        <!--<div class="connection"></div>-->
-        <div class="route-detail">
-          <div class="date-time">17:36</div>
-          <div class="route">
-            <div class="route-img"></div>
-          </div>
-          <div class="destination-info" layout="row" style="width: 90%;">
-            <div class="route-name" flex="10">Gold Souk</div>
+            <div class="route-name" flex="10">{{des.destinationId}}</div>
 
             <div class="more-info"  flex="85">
               The titles of Washed Out's breakthrough song and the first single from Paracosm share the

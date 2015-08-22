@@ -213,7 +213,8 @@
 
         return {
           getInitTrips: getInitTrips,
-          getRoutes: getRoutes
+          getRoutes: getRoutes,
+          getDestination: getDestination
 
         };
 
@@ -229,6 +230,17 @@
             return response.data;
           });
         }
+
+      function getDestination(destinationId){
+        var promise = $http.get('/assets/destination.json');
+        return promise.then(function(response){
+           angular.forEach(response.data, function(item){
+             if (item.destination == destinationId){
+               return item;
+             }
+           })
+        });
+      }
 
     }
 
