@@ -48,6 +48,11 @@ angular
         templateUrl: 'views/know-how.html',
         controller: 'KnowHowCtrl'
       })
+      .state('route',{
+        url: '/route',
+        templateUrl: 'views/route-management.html',
+        controller: 'RouteController'
+      })
       .state('login', {
         url: '/',
         templateUrl: 'views/login.html',
