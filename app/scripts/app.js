@@ -53,6 +53,12 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
         controllerAs: 'vm'
+      })
+      .state('logout', {
+        url: '/logout',
+        templateUrl: 'views/logout.html',
+        controller: 'LogoutCtrl',
+        controllerAs: 'vm'
       });
       // .when('/yeo-page', {
       //   templateUrl: 'views/main.html',

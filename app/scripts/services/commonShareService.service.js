@@ -10,9 +10,9 @@
     angular.module('hackathonApp')
       .service('commonShareService', commonShareService);
 
-    // commonShareService.$inject = ['$scope'];
+    commonShareService.$inject = ['$window'];
 
-    function commonShareService() {
+    function commonShareService($window) {
       var _staticTrips = [
           {
               avatarURL: 'images/avatar/jadlimcaco.jpg',
@@ -29,27 +29,27 @@
                   {
                       fullname: 'Dat Nguyen',
                       avatarURL: 'images/avatar/dat_nguyen.jpg',
-                      comment: 'It\'s sound good',
+                      comment: 'It\'s sound good'
                   },
                   {
                       fullname: 'Hien Pham',
                       avatarURL: 'images/avatar/hien_pham.jpg',
-                      comment: 'That\'s great',
+                      comment: 'That\'s great'
                   },
                   {
                       fullname: 'Hung Thai',
                       avatarURL: 'images/avatar/hung_thai.jpg',
-                      comment: 'We should visit Bur Khalifa first, after that we can go to Dubai mall, they\'re in the same area',
+                      comment: 'We should visit Bur Khalifa first, after that we can go to Dubai mall, they\'re in the same area'
                   },
                   {
                       fullname: 'Luu Le',
                       avatarURL: 'images/avatar/luu_le.jpg',
-                      comment: 'I\'ll be on time',
+                      comment: 'I\'ll be on time'
                   },
                   {
                       fullname: 'Anh Diep',
                       avatarURL: 'images/avatar/anh_diep.jpg',
-                      comment: 'How many room that we will booking',
+                      comment: 'How many room that we will booking'
                   }
               ]
           },
@@ -68,27 +68,27 @@
                   {
                       fullname: 'Dat Nguyen',
                       avatarURL: 'images/avatar/dat_nguyen.jpg',
-                      comment: 'It\'s sound good',
+                      comment: 'It\'s sound good'
                   },
                   {
                       fullname: 'Hien Pham',
                       avatarURL: 'images/avatar/hien_pham.jpg',
-                      comment: 'That\'s great',
+                      comment: 'That\'s great'
                   },
                   {
                       fullname: 'Hung Thai',
                       avatarURL: 'images/avatar/hung_thai.jpg',
-                      comment: 'We should visit Bur Khalifa first, after that we can go to Dubai mall, they\'re in the same area',
+                      comment: 'We should visit Bur Khalifa first, after that we can go to Dubai mall, they\'re in the same area'
                   },
                   {
                       fullname: 'Luu Le',
                       avatarURL: 'images/avatar/luu_le.jpg',
-                      comment: 'I\'ll be on time',
+                      comment: 'I\'ll be on time'
                   },
                   {
                       fullname: 'Anh Diep',
                       avatarURL: 'images/avatar/anh_diep.jpg',
-                      comment: 'How many room that we will booking',
+                      comment: 'How many room that we will booking'
                   }
               ]
           },
@@ -107,27 +107,27 @@
                   {
                       fullname: 'Dat Nguyen',
                       avatarURL: 'images/avatar/dat_nguyen.jpg',
-                      comment: 'It\'s sound good',
+                      comment: 'It\'s sound good'
                   },
                   {
                       fullname: 'Hien Pham',
                       avatarURL: 'images/avatar/hien_pham.jpg',
-                      comment: 'That\'s great',
+                      comment: 'That\'s great'
                   },
                   {
                       fullname: 'Hung Thai',
                       avatarURL: 'images/avatar/hung_thai.jpg',
-                      comment: 'We should visit Bur Khalifa first, after that we can go to Dubai mall, they\'re in the same area',
+                      comment: 'We should visit Bur Khalifa first, after that we can go to Dubai mall, they\'re in the same area'
                   },
                   {
                       fullname: 'Luu Le',
                       avatarURL: 'images/avatar/luu_le.jpg',
-                      comment: 'I\'ll be on time',
+                      comment: 'I\'ll be on time'
                   },
                   {
                       fullname: 'Anh Diep',
                       avatarURL: 'images/avatar/anh_diep.jpg',
-                      comment: 'How many room that we will booking',
+                      comment: 'How many room that we will booking'
                   }
               ]
           },
@@ -146,27 +146,27 @@
                   {
                       fullname: 'Dat Nguyen',
                       avatarURL: 'images/avatar/dat_nguyen.jpg',
-                      comment: 'It\'s sound good',
+                      comment: 'It\'s sound good'
                   },
                   {
                       fullname: 'Hien Pham',
                       avatarURL: 'images/avatar/hien_pham.jpg',
-                      comment: 'That\'s great',
+                      comment: 'That\'s great'
                   },
                   {
                       fullname: 'Hung Thai',
                       avatarURL: 'images/avatar/hung_thai.jpg',
-                      comment: 'We should visit Bur Khalifa first, after that we can go to Dubai mall, they\'re in the same area',
+                      comment: 'We should visit Bur Khalifa first, after that we can go to Dubai mall, they\'re in the same area'
                   },
                   {
                       fullname: 'Luu Le',
                       avatarURL: 'images/avatar/luu_le.jpg',
-                      comment: 'I\'ll be on time',
+                      comment: 'I\'ll be on time'
                   },
                   {
                       fullname: 'Anh Diep',
                       avatarURL: 'images/avatar/anh_diep.jpg',
-                      comment: 'How many room that we will booking',
+                      comment: 'How many room that we will booking'
                   }
               ]
           },
@@ -185,42 +185,60 @@
                   {
                       fullname: 'Dat Nguyen',
                       avatarURL: 'images/avatar/dat_nguyen.jpg',
-                      comment: 'It\'s sound good',
+                      comment: 'It\'s sound good'
                   },
                   {
                       fullname: 'Hien Pham',
                       avatarURL: 'images/avatar/hien_pham.jpg',
-                      comment: 'That\'s great',
+                      comment: 'That\'s great'
                   },
                   {
                       fullname: 'Hung Thai',
                       avatarURL: 'images/avatar/hung_thai.jpg',
-                      comment: 'We should visit Bur Khalifa first, after that we can go to Dubai mall, they\'re in the same area',
+                      comment: 'We should visit Bur Khalifa first, after that we can go to Dubai mall, they\'re in the same area'
                   },
                   {
                       fullname: 'Luu Le',
                       avatarURL: 'images/avatar/luu_le.jpg',
-                      comment: 'I\'ll be on time',
+                      comment: 'I\'ll be on time'
                   },
                   {
                       fullname: 'Anh Diep',
                       avatarURL: 'images/avatar/anh_diep.jpg',
-                      comment: 'How many room that we will booking',
+                      comment: 'How many room that we will booking'
                   }
               ]
           }
-        ];
+        ],
+        _loginInfo = null;
 
         return {
-            getInitTrips: getInitTrips
+            getInitTrips: getInitTrips,
+            getLoginInfo: getLoginInfo,
+            setLoginInfo: setLoginInfo
         };
 
         //==================== Function declaration ====================
 
         function getInitTrips() {
-            return angular.copy(_staticTrips);
+          return angular.copy(_staticTrips);
+        }
+        function getLoginInfo(){
+          if (!_loginInfo) {
+            var param = $window.sessionStorage.loginInfo;
+            _loginInfo = param ? JSON.parse(param) : undefined;
+          }
+          return angular.copy(_loginInfo);
         }
 
+        function setLoginInfo(param){
+          var str = param;
+          if (param) {
+              str = JSON.stringify(param);
+          }
+          _loginInfo = param;
+          $window.sessionStorage.loginInfo = str;
+        }
     }
 
 })();
