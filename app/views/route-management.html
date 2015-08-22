@@ -19,18 +19,22 @@
     </div>
     <div class="trip-info">
       <i class="material-icons">alarm</i>
-      <span>7 hours</span>
+      <span>{{vm.selectedRoute.duration}} hours</span>
     </div>
     <div class="trip-info">
       <i class="material-icons">people</i>
-      <span>5/7 people joined</span>
+      <span>{{vm.selectedRoute.totalJoined}}/{{vm.selectedRoute.totalMember}} people joined</span>
     </div>
     <md-divider class="route-info-divider"></md-divider>
-    <div class="routes" ng-repeat="des in vm.selectedRoute.destinations">
-        <div class="route-detail">
+    <p>
+      {{vm.selectedRoute.description}}
+    </p>
+    <md-divider class="route-info-divider"></md-divider>
+    <div class="routes" >
+        <div class="route-detail" ng-repeat="des in vm.selectedRoute.destinations">
           <div class="date-time">{{des.time}}</div>
           <div class="route">
-            <div class="route-img" ng-style="vm.getDestinationImage(des.destinationId)" ></div>
+            <div class="route-img" style="{{des.photo}}" ></div>
           </div>
           <div class="destination-info" layout="row" style="width: 90%;">
             <div class="route-name" flex="10">{{des.destinationId}}</div>
@@ -45,14 +49,31 @@
           </div>
         </div>
     </div>
-    <md-divider class="route-info-divider"></md-divider>
-    <p>
-      The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-      two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-    </p>
+
     <md-divider class="route-info-divider"></md-divider>
   </md-card-content>
-  <div class="md-actions" layout="row" layout-align="end center">
-    <md-button class="md-raised md-primary">COMMENTS</md-button>
+  <div class="md-actions" layout="row" layout-align="end left">
+
   </div>
+  <v-accordion class="vAccordion--default" multiple>
+
+    <!-- add expanded attribute to open the section -->
+    <v-pane expanded>
+      <v-pane-header>
+        <md-button class="md-raised md-primary">COMMENTS</md-button>
+      </v-pane-header>
+
+      <v-pane-content>
+        <md-list-item class="md-2-line comment-record" ng-repeat="comment in vm.selectedRoute.comments">
+          <img ng-src="{{comment.avatarURL}}" class="md-avatar"/>
+          <div class="md-list-item-text">
+            <h3><a href="#">{{comment.fullname}}</a></h3>
+            <p>{{comment.comment}}</p>
+          </div>
+        </md-list-item>
+      </v-pane-content>
+    </v-pane>
+  </v-accordion>
+  <v-accordion class="vAccordion--default" multiple>
+
 </md-card>

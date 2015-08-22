@@ -1,0 +1,139 @@
+body {
+	background: url("../images/background/sahara_desert_sand_dunes-wide.jpg")!important;
+	background-size: cover!important;
+    background-repeat: no-repeat;
+}
+.circle-200{
+	border-radius: 50%;
+	width: 200px;
+	height: 200px; 
+	
+}
+.circle-150{
+	width: 150px;
+	height: 150px; 
+	
+}
+.circle-100{
+	width: 100px;
+	height: 100px; 
+	
+}
+
+.circle-125{
+	width: 125px;
+	height: 125px; 
+	
+}
+
+.circle-50{
+	width: 50px;
+	height: 50px; 
+	
+}
+.circle{
+	display: inline-block;
+	border-radius: 50%;
+	background-color: blue;
+	position: absolute;
+
+}
+
+.circle-matrix{
+    margin: 20px 5px;
+}
+
+.content{
+	
+}
+
+.decription{
+
+}
+.title{
+	font-weight: bold;
+    font-size: larger;
+    margin-bottom: 10px;
+}
+.des{
+
+}
+.icon1{
+	    left: 7%;
+    top: 28px;
+}
+
+.icon2{
+	left: 31%;
+    top: 97px;
+}
+
+.icon3{
+	left: 46%;
+	top: 8px;
+}
+
+.icon4{
+	left: 68%;
+	top: 69px;
+}
+
+.icon5{
+	left: 53%;
+	top: 162px;
+}
+
+.icon6{
+	top: 199px;
+}
+
+.icon7{
+	top: 215px;
+	left: 18%;
+}
+
+.icon8{
+	top: 208px;
+	left: 38%;
+}
+
+.icon9{
+	left: 0%;
+	top: 318px;
+}
+
+.icon10{
+	left: 30%;
+	top: 329px;;
+}
+
+.icon11{
+	left: 50%;
+	top: 320px;
+}
+
+.icon12{
+	left: 75%;
+	top: 264px;
+}
+
+.icon13{
+	
+}
+
+.icon14{
+	
+}
+
+.icon15{
+	
+}
+
+.icon16{
+	
+}
+
+.icon17{
+	
+}
+

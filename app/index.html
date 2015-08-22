@@ -8,16 +8,21 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/v-accordion/dist/v-accordion.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
+
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/dashboard.css">
     <link rel="stylesheet" href="styles/material-icon.css">
     <link rel="stylesheet" href="styles/route.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="../bower_components/v-accordion/dist/v-accordion.css">
     <!-- endbuild -->
      <!-- Angular Material CSS using GitCDN to load directly from `bower-material/master` -->
     <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
@@ -46,12 +51,27 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Login</a></li>
+              <li class="active"><a ui-sref="home">Home</a></li>
               <li><a ng-href="#/dashboard">dashboard</a></li>
               <li><a ng-href="#/know-how">know-how</a></li>
               <li><a ng-href="#/route">Manage route</a></li>
-              <li><a ng-href="#/route-management">Test memu ite</a></li>
+              <li><a ng-href="#/logout"  ng-show="loginInfo.fullname.length > 0">Logout</a></li>
             </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#" ng-show="loginInfo.fullname.length > 0">Welcome {{loginInfo.fullname}}</a></li>
+              <!-- <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </li> -->
+            </ul>
+
           </div>
         </div>
       </div>
@@ -61,11 +81,11 @@
       <div ui-view=""></div>
     </div>
 
-    <div class="footer">
+<!--     <div class="footer">
       <div class="container-fluid">
         <p><span class="glyphicon glyphicon-heart"></span> from the hackathon with love</p>
       </div>
-    </div>
+    </div> -->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -90,6 +110,8 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/v-accordion/dist/v-accordion.js"></script>
     <!-- endbower -->
     <!-- Angular Meterial dependencies -->
     <script src="bower_components/angular-aria/angular-aria.js"></script>
@@ -98,16 +120,21 @@
 
     <!-- Angular Material Javascript now available via Google CDN; version 0.10 used here -->
     <script src="bower_components/angular-material/angular-material.js"></script>
+
+    <script src="../bower_components/v-accordion/dist/v-accordion.js"></script>
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/services/commonShareService.service.js"></script>
+        <script src="../assets/destinations.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/dashboard.js"></script>
         <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/logout.controller.js"></script>
         <script src="scripts/controllers/know-how.js"></script>
+        <script src="scripts/controllers/HomeController.js"></script>
         <script src="scripts/controllers/route.js"></script>
         <!-- <script src="scripts/controllers/route-management.js"></script> -->
         <!-- endbuild -->
