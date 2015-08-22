@@ -10,9 +10,9 @@
     angular.module('hackathonApp')
       .service('commonShareService', commonShareService);
 
-    commonShareService.$inject = ['$window'];
+    commonShareService.$inject = ['$http', '$window'];
 
-    function commonShareService($window) {
+    function commonShareService($http, $window) {
       var _staticTrips = [
           {
               avatarURL: 'images/avatar/jadlimcaco.jpg',
@@ -213,9 +213,13 @@
         _loginInfo = null;
 
         return {
-            getInitTrips: getInitTrips,
+
             getLoginInfo: getLoginInfo,
-            setLoginInfo: setLoginInfo
+            setLoginInfo: setLoginInfo,
+          getInitTrips: getInitTrips,
+          getRoutes: getRoutes,
+          getDestination: getDestination
+
         };
 
         //==================== Function declaration ====================
@@ -239,6 +243,20 @@
           _loginInfo = param;
           $window.sessionStorage.loginInfo = str;
         }
+        function getRoutes(){
+          var promise = $http.get('/assets/routes.json');
+          return promise.then(function(response){
+            return response.data;
+          });
+        }
+
+      function getDestination(destinationId){
+        var promise = $http.get('/assets/destinations.json');
+        return promise.then(function(response){
+          return response.data;
+        });
+      }
+
     }
 
 })();

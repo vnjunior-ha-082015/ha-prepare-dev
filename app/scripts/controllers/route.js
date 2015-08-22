@@ -14,6 +14,9 @@
     	var vm = this;
 
     	vm.createRoute = createRoute;
+      vm.getDestinationImage = getDestinationImage;
+
+      var destinationList = [];
 
     	function createRoute(event){
 			$mdDialog.show({
@@ -28,7 +31,42 @@
 		    }, function() {
 		      $scope.status = 'You cancelled the dialog.';
 		    });
-		};    
+		};
+
+      function init(){
+        commonShareService.getRoutes().then(function(response){
+          vm.routes = response;
+          var a = 1;
+          vm.selectedRoute = vm.routes[0];
+
+          commonShareService.getDestination().then(function(response){
+            destinationList = response;
+            for (var i = 0; i < vm.selectedRoute.destinations.length; i++) {
+              for (var j = 0; j < destinationList.length; j++) {
+                if (vm.selectedRoute.destinations[i].destinationId == destinationList[j].destination) {
+                  vm.selectedRoute.destinations[i].photo = "background-image : url('images/dubaiDes/" + destinationList[j].photo + "');";
+                  break;
+                }
+              }
+            }
+          });
+        });
+
+
+      }
+
+      function getDestinationImage(destinationId){
+        if (destinationList.length > 0){
+          for (var i = 0; i < destinationList.length; i++){
+            if (destinationList[i].destination == destinationId){
+              return "background-image : url('images/dubaiDes/" + response.photo + "');";
+            }
+          }
+        }
+        return "";
+      }
+
+      init();
 
     };
 
