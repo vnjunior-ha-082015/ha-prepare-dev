@@ -49,10 +49,22 @@ angular
         templateUrl: 'views/know-how.html',
         controller: 'KnowHowCtrl'
       })
+      .state('route',{
+        url: '/route',
+        templateUrl: 'views/route-management.html',
+        controller: 'RouteController',
+        controllerAs: 'vm'
+      })
       .state('login', {
         url: '/',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
+        controllerAs: 'vm'
+      })
+      .state('logout', {
+        url: '/logout',
+        templateUrl: 'views/logout.html',
+        controller: 'LogoutCtrl',
         controllerAs: 'vm'
       });
   })

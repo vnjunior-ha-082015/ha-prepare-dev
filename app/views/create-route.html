@@ -1,0 +1,76 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form>
+	  <md-toolbar>
+	    <div class="md-toolbar-tools">
+	      <h2>Create your route</h2>
+	      <span flex></span>
+	      <md-button class="md-icon-button" ng-click="answer('not applicable')">
+	        <md-icon md-font-library="material-icons">close</md-icon>
+	      </md-button>
+	    </div>
+	  </md-toolbar>
+	  <md-dialog-content style="width:800px;height:810px; ">
+		   <md-content layout-padding class="autoScroll">
+
+			  <md-input-container>
+			    <label>Title</label>
+			    <input required ng-model="routeModel.title" type="text">
+			  </md-input-container>
+
+			  <md-input-container>
+			    <label>Description</label>
+			    <input required ng-model="routeModel.description" type="text">
+			  </md-input-container>
+
+			  <md-input-container flex>
+			    <label>Number of people</label>
+			    <input required type="number" step="any" name="rate" ng-model="project.rate" min="0" max="50">
+			  </md-input-container>
+
+			  <!-- Add destination to route -->
+			  <div layout="column" ng-cloak>
+				  <md-content layout-padding layout="column">
+				    <form ng-submit="$event.preventDefault()">
+				      <label>Add destinations</label>
+				      <md-autocomplete
+				          ng-disabled="ctrl.isDisabled"
+				          md-no-cache="ctrl.noCache"
+				          md-selected-item="ctrl.selectedItem"
+				          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+				          md-search-text="ctrl.searchText"
+				          md-selected-item-change="ctrl.selectedItemChange(item)"
+				          md-items="item in ctrl.querySearch(ctrl.searchText)"
+				          md-item-text="item.name"
+				          md-min-length="0"
+				          placeholder="Select a destination"
+				          md-menu-class="autocomplete-custom-template">
+				        <md-item-template>
+				          <span class="item-title">
+				            <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
+				            <span> {{item.name}} </span>
+				          </span>
+				          <span class="item-metadata">
+				            <span class="item-metastat">
+				              <strong>{{item.watchers}}</strong> watchers
+				            </span>
+				            <span class="item-metastat">
+				              <strong>{{item.forks}}</strong> forks
+				            </span>
+				          </span>
+				        </md-item-template>
+				      </md-autocomplete>
+				    </form>
+				  </md-content>
+				</div>
+			  <!-- Add destination to route -->
+
+			  <div class="md-actions" layout="row">
+			    <span flex></span>
+			    <md-button class="md-raised md-warn" ng-click="answer('cancel')">Cancel</md-button>
+			    <md-button class="md-raised md-primary" ng-click="answer('Create')">Create</md-button>
+			  </div>
+
+			</md-content>
+	   </md-dialog-content>
+  </form>
+</md-dialog>
