@@ -1,4 +1,4 @@
-var constant_locations = [
+[
     {
         "destination": "Dubai Fountains",
         "address": "Financial Centre Road, Dubai Mall, Dubai, United Arab Emirates",
@@ -24,12 +24,12 @@ var constant_locations = [
         "photo": "DubaiMall.jpg"
     },
     {
-        destination: 'Burj Al Arab',
-        address: 'Jumeirah Rd | Burj Al-Arab Hotel, Dubai, United Arab Emirates',
-        description: 'The distinctive sail-shaped silhouette of Burj Al Arab Jumeirah is more than just a stunning hotel, it is a symbol of modern Dubai. Yet for all the wonder this stunning structure provides when you finally see it in person, it is the service within that really makes the Burj Al Arab Jumeirah so extraordinary. Repeatedly voted the worlds most luxurious hotel, this magnificent destination offers you the finest service and facilities throughout – right down to an optional chauffeur-driven Rolls-Royce.',
-        longtt: 55.184873115,
-        latt: 25.1408115,
-        photo: 'BurjAlArab.jpg'
+        "destination": "Burj Al Arab",
+        "address": "Jumeirah Rd | Burj Al-Arab Hotel, Dubai, United Arab Emirates",
+        "description": "The distinctive sail-shaped silhouette of Burj Al Arab Jumeirah is more than just a stunning hotel, it is a symbol of modern Dubai. Yet for all the wonder this stunning structure provides when you finally see it in person, it is the service within that really makes the Burj Al Arab Jumeirah so extraordinary. Repeatedly voted the worlds most luxurious hotel, this magnificent destination offers you the finest service and facilities throughout – right down to an optional chauffeur-driven Rolls-Royce.",
+        "longtt": 55.184873115,
+        "latt": 25.1408115,
+        "photo": "BurjAlArab.jpg"
     },
     {
         "destination": "Aquaventure Waterpark",

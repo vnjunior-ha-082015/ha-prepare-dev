@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'ngMaterial',
     'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'vAccordion'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
