@@ -12,8 +12,7 @@ angular.module('hackathonApp')
     
   	$scope.myInterval = false;
   	$scope.noWrapSlides = true;
-  	$scope.slides = [{image:'images/dubaiDes/GoldSouk.jpg'}, {image:'//placekitten.com/604/302'},
-  					{image:'//placekitten.com/604/301'},{image:'//placekitten.com/604/303'},
-  					{image:'//placekitten.com/604/305'},{image:'//placekitten.com/604/304'}];
+  	$scope.slides = [{image:'images/dubai-img/attlantis-1.jpg'}, {image:'images/dubai-img/attlantis-2.jpg'},
+  					{image:'images/dubai-img/attlantis-3.jpg'}];
 
   });
