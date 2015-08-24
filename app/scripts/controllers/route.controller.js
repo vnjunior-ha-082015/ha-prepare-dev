@@ -43,8 +43,8 @@
             destinationList = response;
             for (var i = 0; i < vm.selectedRoute.destinations.length; i++) {
               for (var j = 0; j < destinationList.length; j++) {
-                if (vm.selectedRoute.destinations[i].destinationId == destinationList[j].destination) {
-                  vm.selectedRoute.destinations[i].photo = "background-image : url('images/dubaiDes/" + destinationList[j].photo + "');";
+                if (vm.selectedRoute.destinations[i].locationName == destinationList[j].destination) {
+                  vm.selectedRoute.destinations[i].photo = "background-image : url('images/dubai-img/" + destinationList[j].photo + "');";
                   break;
                 }
               }
@@ -55,11 +55,11 @@
 
       }
 
-      function getDestinationImage(destinationId){
+      function getDestinationImage(locationName){
         if (destinationList.length > 0){
           for (var i = 0; i < destinationList.length; i++){
-            if (destinationList[i].destination == destinationId){
-              return "background-image : url('images/dubaiDes/" + response.photo + "');";
+            if (destinationList[i].destination == locationName){
+              return "background-image : url('images/dubai-img/" + response.photo + "');";
             }
           }
         }
