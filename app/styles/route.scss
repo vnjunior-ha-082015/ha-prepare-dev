@@ -32,7 +32,7 @@
 .routes{
 
   .route-detail{
-    margin-left: 115px;
+    margin-left: 135px;
     border-left: 2px solid blue;
     &:last-child{
       border-left: none;
@@ -40,10 +40,10 @@
     .date-time{
       display: inline-block;
       color: rgb(63, 81, 181);
-      font-size: 20px;
+      font-size: 15px;
+      width: 75px;
       margin-right: 10px;
-      margin-left: -115px;
-//      min-height: 150px;
+      margin-left: -135px;
     }
     .route{
       display: inline-block;

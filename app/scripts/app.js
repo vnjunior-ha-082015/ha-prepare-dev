@@ -67,10 +67,18 @@ angular
         templateUrl: 'views/logout.html',
         controller: 'LogoutCtrl',
         controllerAs: 'vm'
-      });
+      })
+      .state('test-skyscanner', {
+        url: '/test-skyscanner',
+        templateUrl: 'views/test-skyscanner.html',
+        controller: 'TestSkyscannerController',
+        controllerAs: 'vm'
+      })
+      ;
   })
   .config(function($mdIconProvider){
     $mdIconProvider
        .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
        .defaultIconSet('img/icons/sets/core-icons.svg', 24);
-  });
+  })
+  ;
