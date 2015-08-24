@@ -56,6 +56,7 @@
               <li><a ng-href="#/know-how">know-how</a></li>
               <li><a ng-href="#/route">Manage route</a></li>
               <li><a ng-href="#/logout"  ng-show="loginInfo.fullname.length > 0">Logout</a></li>
+              <li><a ng-href="#/test-skyscanner">Test Skyscanner</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -111,7 +112,6 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/v-accordion/dist/v-accordion.js"></script>
     <!-- endbower -->
     <!-- Angular Meterial dependencies -->
@@ -128,7 +128,6 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/services/commonShareService.service.js"></script>
-        <script src="../assets/destinations.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/dashboard.js"></script>
@@ -137,6 +136,9 @@
         <script src="scripts/controllers/know-how.js"></script>
         <script src="scripts/controllers/HomeController.js"></script>
         <script src="scripts/controllers/route.js"></script>
+        <script src="scripts/services/skyscanner-car-hire.service.js"></script>
+        <script src="scripts/controllers/test-skyscanner.controller.js"></script>
+
         <!-- <script src="scripts/controllers/route-management.js"></script> -->
         <!-- endbuild -->
 </body>

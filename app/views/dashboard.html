@@ -1,7 +1,7 @@
 <md-card class="trip-card" ng-repeat="trip in vm.listTrips">
     <img ng-src="{{trip.avatarURL}}" class="avatar" alt="image caption">
     <md-card-content>
-    <p class="fullname">{{trip.fullname}}</p>
+    <p class="fullname">{{trip.hostedBy}}</p>
     <p class="trip-title">{{trip.tripName}}</p>
     <div class="trip-description">
         <div class="description-content">

@@ -16,7 +16,7 @@
       var _staticTrips = [
           {
               avatarURL: 'images/avatar/jadlimcaco.jpg',
-              fullname: 'John Doe',
+              hostedBy: 'John Doe',
               tripName: '4 people Around Dubai',
               description: 'Anyone interested in travel to Dubai mall, Bur Al Arab, Burj Khalifa, Creek ? This must be fun for four of us. Just 4000 AED for 2 days',
               price: 4000,
@@ -55,7 +55,7 @@
           },
           {
               avatarURL: 'images/avatar/jsa.jpg',
-              fullname: 'Sathiyan Duno',
+              hostedBy: 'Sathiyan Duno',
               tripName: 'Let form a team of 6',
               description: 'Anyone interested in travel to Dubai mall, Bur Al Arab, Burj Khalifa, Creek ? This must be fun for four of us. Just 8000 AED for 4 days',
               price: 8000,
@@ -94,7 +94,7 @@
           },
           {
               avatarURL: 'images/avatar/nzcode.jpg',
-              fullname: 'Nhan Ly',
+              hostedBy: 'Nhan Ly',
               tripName: 'Need 2 people for a trips',
               description: 'Anyone interested in travel to Dubai mall, Bur Al Arab, Burj Khalifa, Creek ? This must be fun for four of us. Just 4000 AED for 4 days',
               price: 4000,
@@ -133,7 +133,7 @@
           },
           {
               avatarURL: 'images/avatar/pixeliris.jpg',
-              fullname: 'Dat Nguyen',
+              hostedBy: 'Dat Nguyen',
               tripName: '4 people Around Dubai',
               description: '2000 USD for 2 days in Dubai',
               price: 2000,
@@ -172,7 +172,7 @@
           },
           {
               avatarURL: 'images/avatar/syswarren.jpg',
-              fullname: 'Syswarren Duno',
+              hostedBy: 'Syswarren Duno',
               tripName: 'Trips for a couple',
               description: 'I wanna find a bf here :)',
               price: 3000,
