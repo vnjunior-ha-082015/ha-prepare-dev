@@ -3,24 +3,26 @@
     "title": "Dubai Mall Tour",
     "description": "laboris esse culpa non voluptate occaecat pariatur irure",
     "hostedBy": "Dat Nguyen",
-    "date": "2015-01-12 12:11",
+    "createDate": "2015-01-12 12:11",
     "minimumCost": 221,
     "currency": "USD",
-    "duration": 2,
     "totalJoined": 2,
     "totalMember": 6,
     "destinations": [
       {
-        "time": "01:22",
-        "destinationId": "Dubai Mall"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Dubai Mall"
       },
       {
-        "time": "03:47",
-        "destinationId": "Aquaventure Waterpark"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Aquaventure Waterpark"
       },
       {
-        "time": "07:36",
-        "destinationId": "Wild Wadi Water Park"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Wild Wadi Water Park"
       }
     ],
     "comments": [
@@ -55,32 +57,36 @@
     "title": "Burj Al Arab Tour",
     "description": "enim elit nisi duis pariatur nostrud dolore fugiat",
     "hostedBy": "",
-    "date": "2015-05-26 03:32",
+    "createDate": "2015-05-26 03:32",
     "minimumCost": 322,
     "currency": "USD",
-    "duration": 4,
     "totalJoined": 3,
     "totalMember": 10,
     "destinations": [
       {
-        "time": "06:23",
-        "destinationId": "Miracle Garden"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Miracle Garden"
       },
       {
-        "time": "07:17",
-        "destinationId": "Dubai Marina Yacht Club"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Dubai Marina Yacht Club"
       },
       {
-        "time": "06:02",
-        "destinationId": "Dubai Fountains"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Dubai Fountains"
       },
       {
-        "time": "09:05",
-        "destinationId": "Burj Khalifa"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Burj Khalifa"
       },
       {
-        "time": "09:43",
-        "destinationId": "Aquaventure Waterpark"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Aquaventure Waterpark"
       }
     ],
     "comments": [
@@ -95,28 +101,31 @@
     "title": "Dubai Mall Tour",
     "description": "ut magna ea ea labore eiusmod consequat excepteur",
     "hostedBy": "",
-    "date": "2014-10-27 07:31",
+    "createDate": "2014-10-27 07:31",
     "minimumCost": 669,
     "currency": "USD",
-    "duration": 3,
     "totalJoined": 3,
     "totalMember": 7,
     "destinations": [
       {
-        "time": "11:38",
-        "destinationId": "Dubai Marina Yacht Club"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Dubai Marina Yacht Club"
       },
       {
-        "time": "07:40",
-        "destinationId": "Wild Wadi Water Park"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Wild Wadi Water Park"
       },
       {
-        "time": "05:35",
-        "destinationId": "Burj Khalifa"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Burj Khalifa"
       },
       {
-        "time": "10:03",
-        "destinationId": "Aquaventure Waterpark"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Aquaventure Waterpark"
       }
     ],
     "comments": [
@@ -151,24 +160,26 @@
     "title": "Dubai Marina Tour",
     "description": "ipsum ex sunt proident tempor sint deserunt elit",
     "hostedBy": "",
-    "date": "2014-02-02 10:15",
+    "createDate": "2014-02-02 10:15",
     "minimumCost": 478,
     "currency": "USD",
-    "duration": 8,
     "totalJoined": 4,
     "totalMember": 7,
     "destinations": [
       {
-        "time": "08:08",
-        "destinationId": "Dubai Marina Yacht Club"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Dubai Marina Yacht Club"
       },
       {
-        "time": "02:31",
-        "destinationId": "Ski Dubai"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Ski Dubai"
       },
       {
-        "time": "08:32",
-        "destinationId": "Wild Wadi Water Park"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Wild Wadi Water Park"
       }
     ],
     "comments": [
@@ -188,20 +199,21 @@
     "title": "Dubai Mall Tour",
     "description": "fugiat ex quis proident nostrud nulla mollit eu",
     "hostedBy": "",
-    "date": "2015-05-03 07:43",
+    "createDate": "2015-05-03 07:43",
     "minimumCost": 504,
     "currency": "USD",
-    "duration": 10,
     "totalJoined": 4,
     "totalMember": 9,
     "destinations": [
       {
-        "time": "10:10",
-        "destinationId": "Dubai Marina Yacht Club"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Dubai Marina Yacht Club"
       },
       {
-        "time": "06:28",
-        "destinationId": "Dubai Fountains"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Dubai Fountains"
       }
     ],
     "comments": [
@@ -236,32 +248,36 @@
     "title": "Dubai Mall Tour",
     "description": "esse nulla labore ex ex anim occaecat amet",
     "hostedBy": "",
-    "date": "2015-05-13 03:58",
+    "createDate": "2015-05-13 03:58",
     "minimumCost": 411,
     "currency": "USD",
-    "duration": 7,
     "totalJoined": 5,
     "totalMember": 6,
     "destinations": [
       {
-        "time": "06:15",
-        "destinationId": "Ski Dubai"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Ski Dubai"
       },
       {
-        "time": "02:26",
-        "destinationId": "Burj Al Arab"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Burj Al Arab"
       },
       {
-        "time": "04:59",
-        "destinationId": "Dubai Fountains"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Dubai Fountains"
       },
       {
-        "time": "11:15",
-        "destinationId": "Miracle Garden"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Miracle Garden"
       },
       {
-        "time": "03:08",
-        "destinationId": "Aquaventure Waterpark"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Aquaventure Waterpark"
       }
     ],
     "comments": [
@@ -276,32 +292,36 @@
     "title": "Dubai Marina Tour",
     "description": "nostrud elit sint tempor velit occaecat cupidatat adipisicing",
     "hostedBy": "",
-    "date": "2015-01-25 11:35",
+    "createDate": "2015-01-25 11:35",
     "minimumCost": 503,
     "currency": "USD",
-    "duration": 5,
     "totalJoined": 5,
     "totalMember": 5,
     "destinations": [
       {
-        "time": "04:58",
-        "destinationId": "Ski Dubai"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Ski Dubai"
       },
       {
-        "time": "03:55",
-        "destinationId": "Ski Dubai"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Ski Dubai"
       },
       {
-        "time": "03:13",
-        "destinationId": "Wild Wadi Water Park"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Wild Wadi Water Park"
       },
       {
-        "time": "09:59",
-        "destinationId": "Burj Khalifa"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Burj Khalifa"
       },
       {
-        "time": "08:55",
-        "destinationId": "Miracle Garden"
+        "startDate": "2015-01-25 15:00",
+        "endDate": "2015-01-26 11:00",
+        "locationName": "Miracle Garden"
       }
     ],
     "comments": [

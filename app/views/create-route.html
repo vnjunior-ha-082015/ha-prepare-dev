@@ -30,36 +30,30 @@
 			  <!-- Add destination to route -->
 			  <div layout="column" ng-cloak>
 				  <md-content layout-padding layout="column">
-				    <form ng-submit="$event.preventDefault()">
 				      <label>Add destinations</label>
 				      <md-autocomplete
-				          ng-disabled="ctrl.isDisabled"
-				          md-no-cache="ctrl.noCache"
-				          md-selected-item="ctrl.selectedItem"
-				          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-				          md-search-text="ctrl.searchText"
-				          md-selected-item-change="ctrl.selectedItemChange(item)"
-				          md-items="item in ctrl.querySearch(ctrl.searchText)"
-				          md-item-text="item.name"
+				          md-selected-item="selectedDestination"
+				          md-search-text="searchText"
+				          md-selected-item-change="selectedDestinationChange(item)"
+				          md-items="item in getDestinationsList(searchText)"
 				          md-min-length="0"
 				          placeholder="Select a destination"
 				          md-menu-class="autocomplete-custom-template">
 				        <md-item-template>
 				          <span class="item-title">
 				            <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
-				            <span> {{item.name}} </span>
+				            <span> {{item.destination}} </span>
 				          </span>
 				          <span class="item-metadata">
 				            <span class="item-metastat">
-				              <strong>{{item.watchers}}</strong> watchers
+				              <strong>{{item.address}}</strong>
 				            </span>
 				            <span class="item-metastat">
-				              <strong>{{item.forks}}</strong> forks
+				              <strong>{{item.photo}}</strong>
 				            </span>
 				          </span>
 				        </md-item-template>
 				      </md-autocomplete>
-				    </form>
 				  </md-content>
 				</div>
 			  <!-- Add destination to route -->

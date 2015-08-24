@@ -6,7 +6,7 @@
 // 'test/spec/{,*/}*.js'
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
-
+// grunt.loadNpmTasks('grunt-connect-proxy');
 module.exports = function (grunt) {
 
   // Load grunt tasks automatically
@@ -71,22 +71,41 @@ module.exports = function (grunt) {
         hostname: 'localhost',
         livereload: 35733
       },
+      proxies: [
+          {
+              context: [
+                '/apiservices/autosuggest/v1.0',
+                '/apiservices/reference/v1.0',
+                '/apiservices/hotels/autosuggest/v2',
+                '/apiservices/hotels/liveprices/v2',
+                '/apiservices/hotels/livedetails/v2/details',
+                '/apiservices/hotels/livedetails/v2/polldetails'
+
+                ],
+              host: 'partners.api.skyscanner.net',
+              port: 80
+          }
+      ],
       livereload: {
         options: {
           open: true,
-          middleware: function (connect) {
-            return [
-              connect.static('.tmp'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              ),
-              connect().use(
-                '/app/styles',
-                connect.static('./app/styles')
-              ),
-              connect.static(appConfig.app)
-            ];
+          middleware: function (connect, options) {
+
+            // Setup the proxy
+            var middlewares = [require('grunt-connect-proxy/lib/utils').proxyRequest];
+
+            middlewares.push(connect.static('.tmp'));
+            middlewares.push(connect().use(
+              '/bower_components',
+              connect.static('./bower_components')
+            ));
+            middlewares.push(connect().use(
+              '/app/styles',
+              connect.static('./app/styles')
+            ));
+            middlewares.push(connect.static(appConfig.app));
+
+            return middlewares;
           }
         }
       },
@@ -95,6 +114,7 @@ module.exports = function (grunt) {
           port: 9001,
           middleware: function (connect) {
             return [
+
               connect.static('.tmp'),
               connect.static('test'),
               connect().use(
@@ -423,6 +443,8 @@ module.exports = function (grunt) {
   });
 
 
+  grunt.loadNpmTasks('grunt-connect-proxy');
+
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
@@ -433,6 +455,7 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'autoprefixer:server',
+      'configureProxies:proxies',
       'connect:livereload',
       'watch'
     ]);

@@ -1,0 +1,20 @@
+<md-card ng-repeat="api in vm.listAPI">
+    <md-card-content>
+    <h2 class="md-title">
+        <label>{{api.responseIndex + '. ' + api.apiName}}</label>
+        <div class="form-group" ng-repeat="param in api.params">
+            <label style="font-size:14px">{{param.name}}</label>
+            <input type="text" class="form-control" ng-model="vm[param.model]" ng-init="vm[param.model] = param.defaultValue" placeholder="{{param.name}}">
+            <i style="font-size:12px; color:gray">{{param.constraints}}</i>
+        </div>
+        <md-button class="md-raised md-primary" ng-click="vm.testResponse[api.responseIndex] = undefined" ng-show="vm.testResponse[api.responseIndex]">Clear reponse</md-button>
+    </h2>
+    <p>
+      <pre>{{vm.testResponse[api.responseIndex] | json}}</pre>
+    </p>
+    </md-card-content>
+    <div class="md-actions" layout="row" layout-align="end center">
+        <md-button class="md-raised md-primary" ng-click="api.controllerFunction()">Hit API</md-button>
+        <md-button class="md-raised md-primary" ng-click="vm.testResponse[api.responseIndex] = undefined" ng-show="vm.testResponse[api.responseIndex]">Clear reponse</md-button>
+    </div>
+</md-card>
