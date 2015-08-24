@@ -24,7 +24,7 @@
 		      templateUrl: 'views/create-route.html',
 		      parent: angular.element(document.body),
 		      targetEvent: event,
-		      clickOutsideToClose:true
+		      clickOutsideToClose:false
 		    })
 		    .then(function(answer) {
 		      $scope.status = 'You said the information was "' + answer + '".';
@@ -70,7 +70,7 @@
 
     };
 
-    function createRouteController($scope, $mdDialog, $timeout, $q, $log) {
+    function createRouteController(commonShareService, $scope, $mdDialog, $timeout, $q, $log) {
 	  $scope.hide = function() {
 	    $mdDialog.hide();
 	  };
@@ -82,29 +82,29 @@
 	  };
 
 	  $scope.simulateQuery = false;
-      $scope.isDisabled    = false;
       $scope.repos         = loadAll();
-      $scope.querySearch   = querySearch;
-      $scope.selectedItemChange = selectedItemChange;
-      $scope.searchTextChange   = searchTextChange;
+      $scope.getDestinationsList   = getDestinationsList;
+      $scope.selectedDestinationChange = selectedDestinationChange;
+	  // function getDestinationsList (query) {
+	  //     var results = query ? $scope.repos.filter( createFilterFor(query) ) : $scope.repos,
+	  //         deferred;
+	  //     if ($scope.simulateQuery) {
+	  //       deferred = $q.defer();
+	  //       $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+	  //       return deferred.promise;
+	  //     } else {
+	  //       return results;
+	  //     }
+	  //   };
 
-	  function querySearch (query) {
-	      var results = query ? $scope.repos.filter( createFilterFor(query) ) : $scope.repos,
-	          deferred;
-	      if ($scope.simulateQuery) {
-	        deferred = $q.defer();
-	        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-	        return deferred.promise;
-	      } else {
-	        return results;
-	      }
+	   function getDestinationsList (query) {
+	      var promise = commonShareService.getDestination(query);
+	      return promise.then(function(response){
+	      	return response;
+	      });
 	    };
 
-	   function searchTextChange(text) {
-	      $log.info('Text changed to ' + text);
-	    }
-
-	    function selectedItemChange(item) {
+	    function selectedDestinationChange(item) {
 	      $log.info('Item changed to ' + JSON.stringify(item));
 	    }
 
@@ -146,6 +146,17 @@
 		        return repo;
 		      });
 		    };
+
+		/**
+	     * Create filter function for a query string
+	     */
+	    function createFilterFor(query) {
+	      var lowercaseQuery = angular.lowercase(query);
+	      return function filterFn(item) {
+	        return (item.value.indexOf(lowercaseQuery) === 0);
+	      };
+	    };
+
 	};
 
 })();
