@@ -45,6 +45,8 @@
               for (var j = 0; j < destinationList.length; j++) {
                 if (vm.selectedRoute.destinations[i].locationName == destinationList[j].destination) {
                   vm.selectedRoute.destinations[i].photo = "background-image : url('images/dubai-img/" + destinationList[j].photo + "');";
+                  vm.selectedRoute.destinations[i].address = destinationList[j].address;
+                  vm.selectedRoute.destinations[i].description = destinationList[j].description;
                   break;
                 }
               }
