@@ -42,15 +42,19 @@
       color: rgb(63, 81, 181);
       font-size: 15px;
       width: 75px;
-      margin-right: 10px;
       margin-left: -135px;
+      max-width: 120px;
+      text-align: center;
+      vertical-align: top;
+      padding-top: 31px;
     }
     .route{
       display: inline-block;
-      vertical-align: middle;
+      vertical-align: baseline;
       width: 100px;
       height: 100px;
       padding-left: 3px;
+      margin-left: 5px;
       .route-img{
         background-image: url('../images/dubaides/DubaiMall.jpg');
         width: 90px;
@@ -71,13 +75,15 @@
     }
     .destination-info{
       display: inline-block;
+      vertical-align: middle;
       min-height: 150px;
       position: relative;
       .more-info{
         border: 1px solid rgb(160, 158, 158);
         border-radius: 5px;
         padding: 10px;
-        display: inline-flex;
+        min-height: 120px;
+        display: inline-block;
       }
     }
   }
