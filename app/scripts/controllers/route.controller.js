@@ -75,25 +75,39 @@
 
     function createRouteController(commonShareService, $scope, $mdDialog, $timeout, $q, $log) {
       var vm = this;
+      vm.routeModel = {
+                        title: null,
+                        description: null,
+                        hostedBy: null,
+                        createDate: null,
+                        minimumCost: null,
+                        currency: null,
+                        totalJoined: 0,
+                        totalMember: 0,
+                        destinations: []
+                      };
       vm.answer = answer;
+      vm.cancel = cancel;
+      vm.confirmRoute = confirmRoute;
       vm.selectedDestinationChange = selectedDestinationChange;
       vm.getDestinationsList = getDestinationsList;
       vm.selectedDestinationChange = selectedDestinationChange;
       vm.addMoreDestination = addMoreDestination;
-      vm.newRoute = [null];
-
-      // $scope.hide = function() {
-      //   $mdDialog.hide();
-      // };
-      // $scope.cancel = function() {
-
-      //   $mdDialog.cancel();
-      // };
+      vm.removeDestination = removeDestination;
+      vm.routeModel.destinations = [null];
 
   	  function answer(ans) {
   	    $mdDialog.hide(ans);
   	  };
  
+      function cancel(){
+        $mdDialog.cancel();
+      };
+
+      function confirmRoute(model){
+        var  a = 1;
+      };
+
       function querySearch(query){
         var promise = commonShareService.getDestination(query);
         return promise.then(function(response){
@@ -110,31 +124,18 @@
       };
   	  
       function selectedDestinationChange(item, index){
-        if(!item){
-          vm.newRoute.splice(index,1);
-          return;
-        }
       };
 
       function addMoreDestination(){
-        vm.newRoute.push(null);
+        vm.routeModel.destinations.push(null);
       };
-      // $scope.allContacts = getDestinationsList();
 
-      // function getDestinationsList(){
-      //   var promise = commonShareService.getDestination();
-      //     return promise.then(function(response){
-      //      return response;
-      //     });
-      // };
-  	   // function getDestinationsList (query) {
-  	   //    var promise = commonShareService.getDestination(query);
-  	   //    return promise.then(function(response){
-  	   //    	return response;
-  	   //    });
-  	   //  };
-	
-
+      function removeDestination(){
+        if(vm.routeModel.destinations.length > 1){
+          vm.routeModel.destinations.pop();
+        }
+      };
+    
 	};
 
 })();
