@@ -21,6 +21,7 @@
     	function createRoute(event){
 			$mdDialog.show({
 		      controller: createRouteController,
+          controllerAs: "vm",
 		      templateUrl: 'views/create-route.html',
 		      parent: angular.element(document.body),
 		      targetEvent: event,
@@ -71,38 +72,66 @@
     };
 
     function createRouteController(commonShareService, $scope, $mdDialog, $timeout, $q, $log) {
-	  $scope.hide = function() {
-	    $mdDialog.hide();
-	  };
-	  $scope.cancel = function() {
-	    $mdDialog.cancel();
-	  };
-	  $scope.answer = function(answer) {
-	    $mdDialog.hide(answer);
-	  };
+      var vm = this;
+      vm.answer = answer;
+      vm.selectedDestinationChange = selectedDestinationChange;
+      vm.getDestinationsList = getDestinationsList;
+      vm.selectedDestinationChange = selectedDestinationChange;
+      vm.addMoreDestination = addMoreDestination;
+      vm.newRoute = [null];
 
-      $scope.newDestinationsList = [{
-									"destination": 'TEST',
-							        "address": null,
-							        "description": null,
-							        "longtt": null,
-							        "latt": null,
-							        "photo": null
-							      }];
-      $scope.getDestinationsList   = getDestinationsList;
-      $scope.selectedDestinationChange = selectedDestinationChange;
-	  
+      // $scope.hide = function() {
+      //   $mdDialog.hide();
+      // };
+      // $scope.cancel = function() {
 
-	   function getDestinationsList (query) {
-	      var promise = commonShareService.getDestination(query);
-	      return promise.then(function(response){
-	      	return response;
-	      });
-	    };
+      //   $mdDialog.cancel();
+      // };
 
-	    function selectedDestinationChange(item) {
-	    	$scope.newDestinationsList.push(item);
-	    }
+  	  function answer(ans) {
+  	    $mdDialog.hide(ans);
+  	  };
+ 
+      function querySearch(query){
+        var promise = commonShareService.getDestination(query);
+        return promise.then(function(response){
+           return response;
+          });
+      };
+
+
+      function getDestinationsList(){
+        var promise = commonShareService.getDestination();
+          return promise.then(function(response){
+           return response;
+          });
+      };
+  	  
+      function selectedDestinationChange(item, index){
+        if(!item){
+          vm.newRoute.splice(index,1);
+          return;
+        }
+      };
+
+      function addMoreDestination(){
+        vm.newRoute.push(null);
+      };
+      // $scope.allContacts = getDestinationsList();
+
+      // function getDestinationsList(){
+      //   var promise = commonShareService.getDestination();
+      //     return promise.then(function(response){
+      //      return response;
+      //     });
+      // };
+  	   // function getDestinationsList (query) {
+  	   //    var promise = commonShareService.getDestination(query);
+  	   //    return promise.then(function(response){
+  	   //    	return response;
+  	   //    });
+  	   //  };
+	
 
 	};
 

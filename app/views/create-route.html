@@ -4,43 +4,44 @@
 	    <div class="md-toolbar-tools">
 	      <h2>Create your route</h2>
 	      <span flex></span>
-	      <md-button class="md-icon-button" ng-click="answer('not applicable')">
+	      <md-button class="md-icon-button" ng-click="vm.answer('not applicable')">
 	        <md-icon md-font-library="material-icons">close</md-icon>
 	      </md-button>
 	    </div>
 	  </md-toolbar>
-	  <md-dialog-content style="width:800px;height:810px; ">
+	  <md-dialog-content style="width:1000px;height:1200px; ">
 		   <md-content layout-padding class="autoScroll">
 
 			  <md-input-container>
 			    <label>Title</label>
-			    <input required ng-model="routeModel.title" type="text">
+			    <input  ng-model="vm.routeModel.title" type="text">
 			  </md-input-container>
 
 			  <md-input-container>
 			    <label>Description</label>
-			    <input required ng-model="routeModel.description" type="text">
+			    <input  ng-model="vm.routeModel.description" type="text">
 			  </md-input-container>
 
 			  <md-input-container flex>
 			    <label>Number of people</label>
-			    <input required type="number" step="any" name="rate" ng-model="project.rate" min="0" max="50">
+			    <input  type="number" step="any" name="rate" ng-model="vm.routeModel.test" min="0" max="50">
 			  </md-input-container>
 
 			  <!-- Add destination to route -->
 				<div layout="column" ng-cloak>
 				  <md-content layout-padding layout="column">
 				      <label>Add destinations</label>
-				      <div ng-repeat = "destination in newDestinationsList track by $index">
+				      <div ng-repeat = "destination in vm.newRoute track by $index">
 					      <md-autocomplete
-					          md-selected-item="selectedDestination"
+					          md-selected-item="newRoute[$index]"
 					          md-search-text="searchText"
-					          md-selected-item-change="selectedDestinationChange(item)"
-					          md-items="item in getDestinationsList(searchText)"
+					          md-selected-item-change="vm.selectedDestinationChange(item, $index)"
+					          md-items="item in vm.getDestinationsList(searchText)"
 					          md-item-text="item.destination"
 					          md-min-length="0"
 					          placeholder="Select a destination"
 					          md-menu-class="autocomplete-custom-template">
+
 					        <md-item-template>
 					          <span class="item-title">
 					            <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
@@ -55,16 +56,22 @@
 					            </span>
 					          </span>
 					        </md-item-template>
+
 					      </md-autocomplete>
-				  	  </div> 	
-				  </md-content>
+
+					      <pre>{{newRoute[$index] | json}}</pre>
+				  	  </div>
+				  	  <md-button class="md-fab md-mini md-primary" ng-click="vm.addMoreDestination()">
+				        <md-icon md-svg-src="img/icons/android.svg"></md-icon>
+				      </md-button>
+				  	 </md-content>
 				</div>
 			  <!-- Add destination to route -->
 
 			  <div class="md-actions" layout="row">
 			    <span flex></span>
-			    <md-button class="md-raised md-warn" ng-click="answer('cancel')">Cancel</md-button>
-			    <md-button class="md-raised md-primary" ng-click="answer('Create')">Create</md-button>
+			    <md-button class="md-raised md-warn" ng-click="vm.answer('cancel')">Cancel</md-button>
+			    <md-button class="md-raised md-primary" ng-click="vm.answer('Create')">Create</md-button>
 			  </div>
 
 			</md-content>
