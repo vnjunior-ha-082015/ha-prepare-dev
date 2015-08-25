@@ -6,26 +6,30 @@
 	</div>
 
 	<div class="circle-matrix col-sm-6 col-md-6 col-lg-6">
-		<span class="circle-150 circle icon1 img-dubai-mall"></span>
-		<span class="circle-100 circle icon2 img-dubai-fountaint"></span>
-		<span class="circle-125 circle icon3 img-mall-emirates"></span>
-		<span class="circle-100 circle icon4 img-gold-souk"></span>
-		<span class="circle-150 circle icon5 img-burj-khalifa"></span>
-		<span class="circle-100 circle icon6 img-miracle-garden"></span>
-		<span class="circle-125 circle icon7 img-skidubai"></span>
-		<span class="circle-100 circle icon8 img-global-village"></span>
-		<span class="circle-150 circle icon9 img-wild-wadi"></span>
-		<span class="circle-125 circle icon10 img-attlantis"></span>
-		<span class="circle-150 circle icon11 img-burj-al-arab"></span>
-		<span class="circle-100 circle icon12 img-palm-islands"></span>
+		<span class="circle-150 circle icon1 img-dubai-mall" ng-click="select(3)"></span>
+		<span class="circle-100 circle icon2 img-dubai-fountaint" ng-click="select(1)"></span>
+		<span class="circle-125 circle icon3 img-marina-yach" ng-click="select(7)"></span>
+		<span class="circle-100 circle icon4 img-gold-souk" ng-click="select(15)"></span>
+		<span class="circle-150 circle icon5 img-burj-khalifa" ng-click="select(2)"></span>
+		<span class="circle-100 circle icon6 img-miracle-garden" ng-click="select(8)"></span>
+		<span class="circle-125 circle icon7 img-skidubai" ng-click="select(9)"></span>
+		<span class="circle-100 circle icon8 img-global-village" ng-click="select(16)"></span>
+		<span class="circle-150 circle icon9 img-wild-wadi" ng-click="select(6)"></span>
+		<span class="circle-125 circle icon10 img-attlantis" ng-click="select(5)"></span>
+		<span class="circle-150 circle icon11 img-burj-al-arab" ng-click="select(4)"></span>
+		<span class="circle-100 circle icon12 img-ibn-battuta-mall" ng-click="select(10)"></span>
+		<span class="circle-100 circle icon13 img-dubai-museum" ng-click="select(11)"></span>
+		<span class="circle-100 circle icon14 img-world-islands" ng-click="select(15)"></span>
+		<span class="circle-100 circle icon15 img-palm-islands" ng-click="select(12)"></span>
+		<span class="circle-100 circle icon16 img-marina-mall" ng-click="select(13)"></span>
 
 	</div>
 	
 	<div class="content col-sm-5 col-md-5 col-lg-5">
 		<div style="height: 305px; width: 100%">
 			<carousel interval="myInterval" no-wrap="noWrapSlides">
-				<slide ng-repeat="slide in slides" active="slide.active">
-					<img ng-src="{{slide.image}}" width="600" height="300" style="margin:auto; height: 300px">
+				<slide ng-repeat="slide in slides">
+					<img ng-src="{{slide}}" width="600" height="300" style="margin:auto; height: 300px">
 					<div class="carousel-caption">
 						<!-- <h4>Slide {{$index}}</h4>
 						<p>{{slide.text}}</p> -->
