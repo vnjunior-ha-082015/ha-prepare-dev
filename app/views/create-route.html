@@ -42,19 +42,28 @@
 					          placeholder="Select a destination"
 					          md-menu-class="autocomplete-custom-template">
 
-					        <md-item-template>
-					          <span class="item-title">
-					            <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
-					            <span> {{item.destination}} </span>
-					          </span>
-					          <span class="item-metadata">
-					            <span class="item-metastat">
-					              <strong>{{item.address}}</strong>
-					            </span>
-					            <span class="item-metastat">
-					              <strong>{{item.photo}}</strong>
-					            </span>
-					          </span>
+					        <md-item-template >
+					          <!--<span class="item-title">-->
+					            <!--<md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>-->
+					            <!--<span> {{item.destination}} </span>-->
+					          <!--</span>-->
+					          <!--<span class="item-metadata">-->
+					            <!--<span class="item-metastat">-->
+					              <!--<strong>{{item.address}}</strong>-->
+					            <!--</span>-->
+					            <!--<span class="item-metastat">-->
+					              <!--<strong>{{item.photo}}</strong>-->
+					            <!--</span>-->
+					          <!--</span>-->
+                    <div class="item-image" style="background-image: url('images/dubai-img/{{item.photo}}');"></div>
+                    <div class="item-info" >
+                      <div class="item-info-name" >
+                        {{item.destination}}
+                      </div>
+                      <div class="item-info-address" >
+                        {{item.address}}
+                      </div>
+                    </div>
 					        </md-item-template>
 
 					      </md-autocomplete>
@@ -62,10 +71,10 @@
 					      <!-- <pre>{{vm.routeModel.destinations[$index] | json}}</pre> -->
 				  	  </div>
 				  	  <div class="md-actions" layout="row">
-					  	  <md-button class="md-fab md-mini md-primary" ng-click="vm.addMoreDestination()">
+					  	  <md-button class="md-fab md-mini md-primary" type="button" ng-click="vm.addMoreDestination()">
 					        <md-icon md-font-library="material-icons">add circle</md-icon>
 					      </md-button>
-					      <md-button class="md-fab md-mini md-warning" ng-click="vm.removeDestination()">
+					      <md-button class="md-fab md-mini md-warning" type="button" ng-click="vm.removeDestination()">
 					        <md-icon md-font-library="material-icons">remove circle</md-icon>
 					      </md-button>
 				  	   </div>

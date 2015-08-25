@@ -94,4 +94,30 @@
   }
 }
 
+.md-autocomplete-suggestions li{
+  height: 80px !important;
+  .item-image{
+    display: inline-block;
+    vertical-align: middle;
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    border-radius: 30px;
+    margin-right: 15px;
+    margin-top: 10px;
+  }
+  .item-info{
+    display: inline-block;
+    vertical-align: middle;
+    padding-bottom: 10px;
+    .item-info-name{
+      height: 25px;
+      font-weight: bold;
+    }
+    .item-info-address{
+      height: 25px;
+    }
+  }
+}
+
 
