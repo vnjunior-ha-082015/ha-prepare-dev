@@ -4,13 +4,13 @@
   </md-button>
 </md-card>
 
-<md-card>
+<md-card ng-repeat="selectedRoute in vm.selectedRoutes">
   <div class="card-header">
     <div class="pickgradient">
-      <img src="images/dubai-img/burjkhalifa.jpg" class="md-card-image" alt="Burj Khalifa" style="max-height: 250px">
+      <img ng-src="{{selectedRoute.tripImage}}" class="md-card-image" alt="Burj Khalifa" style="max-height: 250px">
     </div>
-    <h1 class="md-image-title">{{vm.selectedRoute.title}}</h1>
-    <label class="md-image-label">HOSTED BY {{vm.selectedRoute.hostedBy}}</label>
+    <h1 class="md-image-title">{{selectedRoute.title}}</h1>
+    <label class="md-image-label">HOSTED BY {{selectedRoute.hostedBy}}</label>
   </div>
   <md-card-content>
     <div class="trip-info">
@@ -19,15 +19,15 @@
     </div>
     <div class="trip-info">
       <i class="material-icons">people</i>
-      <span>{{vm.selectedRoute.totalJoined}}/{{vm.selectedRoute.totalMember}} people joined</span>
+      <span>{{selectedRoute.totalJoined}}/{{selectedRoute.totalMember}} people joined</span>
     </div>
     <md-divider class="route-info-divider"></md-divider>
     <p>
-      {{vm.selectedRoute.description}}
+      {{selectedRoute.description}}
     </p>
     <md-divider class="route-info-divider"></md-divider>
     <div class="routes" >
-        <div class="route-detail" ng-repeat="des in vm.selectedRoute.destinations">
+        <div class="route-detail" ng-repeat="des in selectedRoute.destinations">
           <div class="date-time">{{des.startDate}}</div>
           <div class="route">
             <div class="route-img" style="{{des.photo}}" ></div>
@@ -51,19 +51,30 @@
   <v-accordion class="vAccordion--default" multiple>
 
     <!-- add expanded attribute to open the section -->
-    <v-pane expanded>
+    <!-- <v-pane expanded> -->
+    <v-pane>
       <v-pane-header>
         <md-button class="md-raised md-primary">COMMENTS</md-button>
       </v-pane-header>
 
       <v-pane-content>
-        <md-list-item class="md-2-line comment-record" ng-repeat="comment in vm.selectedRoute.comments">
+        <md-list-item class="md-2-line comment-record" ng-repeat="comment in selectedRoute.comments">
           <img ng-src="{{comment.avatarURL}}" class="md-avatar"/>
           <div class="md-list-item-text">
             <h3><a href="#">{{comment.fullname}}</a></h3>
             <p>{{comment.comment}}</p>
           </div>
         </md-list-item>
+        <md-input-container flex>
+            <label>Write your comment</label>
+            <textarea ng-model="selectedRoute.activeComment" columns="1" md-maxlength="150"></textarea>
+        </md-input-container>
+        <md-button class="md-fab md-primary pull-right" ng-click="vm.onCommentButton($index)" ng-disabled="!selectedRoute.activeComment || selectedRoute.activeComment.length == 0">
+            <md-icon md-font-library="material-icons">done</md-icon>
+            <md-tooltip>
+              Post comment
+            </md-tooltip>
+        </md-button>
       </v-pane-content>
     </v-pane>
   </v-accordion>
