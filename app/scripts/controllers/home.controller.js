@@ -13,18 +13,24 @@
   	// $scope.myInterval = false;
   	// $scope.noWrapSlides = true;
   	$scope.slides;
-  	$scope.selectedCircle ;
   	$scope.mySlides = [];
-
+  	$scope.selectedCircle  = 1;
+  	$scope.isSelected = function(id){
+  		if (id == $scope.selectedCircle) return true;
+  		else return false;
+  	}
   	commonShareService.getDestination().then(function(response){
   		$scope.des = response;
   		for(var i = 0; i < response[0].photoList.length; i++){
   			$scope.mySlides.push({image:response[0].photoList[i], active:false});
   		}
   		$scope.mySlides[0].active = true;
+  		$scope.description = response[0].description;
   	});
 
   	$scope.select = function(id){
+  		$scope.selectedCircle  = id;
+  		$scope.description = $scope.des[id-1].description;
   		$scope.mySlides = [];
   		for(var i = 0; i < $scope.des[id-1].photoList.length; i++){
   			$scope.mySlides.push({image:$scope.des[id-1].photoList[i], active:false});
