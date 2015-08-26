@@ -143,17 +143,7 @@
            });
           });
       };
-  	  
-      // function addMoreDestination(){
-      //   vm.routeModel.destinations.push(null);
-      // };
-
-      // function removeDestination(){
-      //   if(vm.routeModel.destinations.length > 1){
-      //     vm.routeModel.destinations.pop();
-      //   }
-      // };
-    
+  
 	};
 
 })();
