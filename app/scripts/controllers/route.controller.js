@@ -8,68 +8,72 @@
         .module('hackathonApp')
         .controller('RouteController',RouteController);
 
-    RouteController.$inject = ['commonShareService', '$scope', '$mdDialog'];
+    RouteController.$inject = ['commonShareService', '$scope', '$mdDialog', '$rootScope'];
 
-    function RouteController(commonShareService, $scope, $mdDialog){
+    function RouteController(commonShareService, $scope, $mdDialog, $rootScope){
     	var vm = this;
 
     	vm.createRoute = createRoute;
-      vm.getDestinationImage = getDestinationImage;
-
+      vm.onCommentButton = onCommentButton;
       var destinationList = [];
 
-    	function createRoute(event){
-			$mdDialog.show({
-		      controller: createRouteController,
-          controllerAs: "vm",
-		      templateUrl: 'views/create-route.html',
-		      parent: angular.element(document.body),
-		      targetEvent: event,
-		      clickOutsideToClose:false
-		    })
-		    .then(function(answer) {
-		      $scope.status = 'You said the information was "' + answer + '".';
-		    }, function() {
-		      $scope.status = 'You cancelled the dialog.';
-		    });
-		};
+      init();
 
       function init(){
         commonShareService.getRoutes().then(function(response){
           vm.routes = response;
           var a = 1;
-          vm.selectedRoute = vm.routes[0];
+          //////////////
+          vm.selectedRoutes = angular.copy(vm.routes);
 
           commonShareService.getDestination().then(function(response){
             destinationList = response;
-            for (var i = 0; i < vm.selectedRoute.destinations.length; i++) {
-              for (var j = 0; j < destinationList.length; j++) {
-                if (vm.selectedRoute.destinations[i].locationName == destinationList[j].destination) {
-                  vm.selectedRoute.destinations[i].photo = "background-image : url('images/dubai-img/" + destinationList[j].photo + "');";
-                  vm.selectedRoute.destinations[i].address = destinationList[j].address;
-                  vm.selectedRoute.destinations[i].description = destinationList[j].description;
-                  break;
+            for(var k = 0; k < vm.selectedRoutes.length; k++){
+              for (var i = 0; i < vm.selectedRoutes[k].destinations.length; i++) {
+                for (var j = 0; j < destinationList.length; j++) {
+                  if (vm.selectedRoutes[k].destinations[i].locationId == destinationList[j].id) {
+                    vm.selectedRoutes[k].destinations[i].photo = "background-image : url('images/dubai-img/" + destinationList[j].photo + "');";
+                    vm.selectedRoutes[k].destinations[i].address = destinationList[j].address;
+                    vm.selectedRoutes[k].destinations[i].description = destinationList[j].description;
+                    vm.selectedRoutes[k].destinations[i].locationName = destinationList[j].destination;
+                    break;
+                  }
                 }
               }
             }
           });
         });
-
-
       }
 
-      function getDestinationImage(locationName){
-        if (destinationList.length > 0){
-          for (var i = 0; i < destinationList.length; i++){
-            if (destinationList[i].destination == locationName){
-              return "background-image : url('images/dubai-img/" + response.photo + "');";
-            }
-          }
+      function createRoute(event){
+        $mdDialog.show({
+            controller: createRouteController,
+            controllerAs: "vm",
+            templateUrl: 'views/create-route.html',
+            parent: angular.element(document.body),
+            targetEvent: event,
+            clickOutsideToClose:false
+          })
+          .then(function(answer) {
+            $scope.status = 'You said the information was "' + answer + '".';
+          }, function() {
+            $scope.status = 'You cancelled the dialog.';
+          });
+      };
+
+      function onCommentButton(index){
+        var currentTrip = vm.selectedRoutes[index];
+        if(currentTrip.activeComment && currentTrip.activeComment.length > 0){
+          $rootScope.loginInfo = commonShareService.getLoginInfo();
+          currentTrip.comments.push({
+                  fullname: $rootScope.loginInfo.fullname,
+                  avatarURL: $rootScope.loginInfo.avatarURL,
+                  comment: currentTrip.activeComment
+              });
+          currentTrip.activeComment = '';
         }
-        return "";
       }
 
-      init();
 
     };
 
@@ -99,7 +103,7 @@
   	  function answer(ans) {
   	    $mdDialog.hide(ans);
   	  };
- 
+
       function cancel(){
         $mdDialog.cancel();
       };
@@ -122,7 +126,7 @@
            return response;
           });
       };
-  	  
+
       function selectedDestinationChange(item, index){
       };
 
@@ -135,7 +139,7 @@
           vm.routeModel.destinations.pop();
         }
       };
-    
+
 	};
 
 })();

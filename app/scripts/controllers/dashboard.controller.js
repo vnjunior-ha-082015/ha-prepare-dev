@@ -21,7 +21,26 @@
 
           //==================== Function declaration ====================
           function activate(){
-            vm.listTrips = commonShareService.getInitTrips();
+            commonShareService.getRoutes().then(function(trips){
+              vm.listTrips = trips;
+
+              commonShareService.getDestination().then(function(response){
+                vm.destinationList = response;
+                for(var k = 0; k < vm.listTrips.length; k++){
+                  for (var i = 0; i < vm.listTrips[k].destinations.length; i++) {
+                    for (var j = 0; j < vm.destinationList.length; j++) {
+                      if (vm.listTrips[k].destinations[i].locationId == vm.destinationList[j].id) {
+                        vm.listTrips[k].destinations[i].photo = "background-image : url('images/dubai-img/" + vm.destinationList[j].photo + "');";
+                        vm.listTrips[k].destinations[i].address = vm.destinationList[j].address;
+                        vm.listTrips[k].destinations[i].description = vm.destinationList[j].description;
+                        vm.listTrips[k].destinations[i].locationName = vm.destinationList[j].destination;
+                        break;
+                      }
+                    }
+                  }
+                }
+              });
+            });
           }
 
           function onCommentButton(index){
