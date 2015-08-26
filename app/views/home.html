@@ -27,7 +27,7 @@
 
 	<div class="content col-sm-5 col-md-5 col-lg-5">
 		<div id="carousel-section" style="height: 305px; width: 100%">
-			<carousel interval="myInterval" no-wrap="noWrapSlides">
+			<carousel interval="5000" no-wrap="false">
 				<slide ng-repeat="slide in mySlides">
 					<img ng-src="{{slide.image}}" active="slide.active" width="600" height="300" style="margin:auto; height: 300px">
 					<div class="carousel-caption">
