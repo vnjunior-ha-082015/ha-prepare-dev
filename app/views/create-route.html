@@ -28,58 +28,36 @@
 			  </md-input-container>
 
 			  <!-- Add destination to route -->
-				<div layout="column" ng-cloak>
-				  <md-content layout-padding layout="column">
-				      <label>Add destinations</label>
-				      <div ng-repeat = "destination in vm.routeModel.destinations track by $index">
-					      <md-autocomplete
-					          md-selected-item="vm.routeModel.destinations[$index]"
-					          md-search-text="searchText"
-					          md-selected-item-change="vm.selectedDestinationChange(item, $index)"
-					          md-items="item in vm.getDestinationsList(searchText)"
-					          md-item-text="item.destination"
-					          md-min-length="1"
-					          placeholder="Select a destination"
-					          md-menu-class="autocomplete-custom-template">
-
-					        <md-item-template >
-					          <!--<span class="item-title">-->
-					            <!--<md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>-->
-					            <!--<span> {{item.destination}} </span>-->
-					          <!--</span>-->
-					          <!--<span class="item-metadata">-->
-					            <!--<span class="item-metastat">-->
-					              <!--<strong>{{item.address}}</strong>-->
-					            <!--</span>-->
-					            <!--<span class="item-metastat">-->
-					              <!--<strong>{{item.photo}}</strong>-->
-					            <!--</span>-->
-					          <!--</span>-->
-                    <div class="item-image" style="background-image: url('images/dubai-img/{{item.photo}}');"></div>
-                    <div class="item-info" >
-                      <div class="item-info-name" >
-                        {{item.destination}}
-                      </div>
-                      <div class="item-info-address" >
-                        {{item.address}}
-                      </div>
-                    </div>
-					        </md-item-template>
-
-					      </md-autocomplete>
-
-					      <!-- <pre>{{vm.routeModel.destinations[$index] | json}}</pre> -->
-				  	  </div>
-				  	  <div class="md-actions" layout="row">
-					  	  <md-button class="md-fab md-mini md-primary" type="button" ng-click="vm.addMoreDestination()">
-					        <md-icon md-font-library="material-icons">add circle</md-icon>
-					      </md-button>
-					      <md-button class="md-fab md-mini md-warning" type="button" ng-click="vm.removeDestination()">
-					        <md-icon md-font-library="material-icons">remove circle</md-icon>
-					      </md-button>
-				  	   </div>
-				  	 </md-content>
-				</div>
+			  <md-content class="md-padding autocomplete" layout="column">
+			    <md-contact-chips
+			        ng-model="vm.destinations"
+			        md-contacts="vm.queryDestination($query)"
+			        md-contact-name="destination"
+			        md-contact-image="image"
+			        md-contact-email="address"
+			        md-require-match
+			        filter-selected="vm.filterSelected"
+			        placeholder="To">
+			    </md-contact-chips>
+			    <md-list class="fixedRows">
+			      <md-subheader class="md-no-sticky">Contacts</md-subheader>
+			      <md-list-item class="md-2-line contact-item" ng-repeat="(index, contact) in vm.allDestinations"
+			          ng-if="vm.destinations.indexOf(contact) < 0">
+			        <img ng-src="{{contact.image}}" class="md-avatar" alt="{{contact.destination}}" />
+			        <div class="md-list-item-text compact">
+			          <h3>{{contact.destination}}</h3>
+			          <p>{{contact.address}}</p>
+			        </div>
+			      </md-list-item>
+			      <md-list-item class="md-2-line contact-item selected" ng-repeat="(index, contact) in vm.destinations">
+			        <img ng-src="{{contact.image}}" class="md-avatar" alt="{{contact.destination}}" />
+			        <div class="md-list-item-text compact">
+			          <h3>{{contact.destination}}</h3>
+			          <p>{{contact.address}}</p>
+			        </div>
+			      </md-list-item>
+			    </md-list>
+			  </md-content>
 			  <!-- Add destination to route -->
 
 			  <div class="md-actions" layout="row">

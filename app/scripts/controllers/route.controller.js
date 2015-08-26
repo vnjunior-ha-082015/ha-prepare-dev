@@ -92,13 +92,37 @@
                       };
       vm.answer = answer;
       vm.cancel = cancel;
-      vm.confirmRoute = confirmRoute;
-      vm.selectedDestinationChange = selectedDestinationChange;
-      vm.getDestinationsList = getDestinationsList;
-      vm.selectedDestinationChange = selectedDestinationChange;
-      vm.addMoreDestination = addMoreDestination;
-      vm.removeDestination = removeDestination;
-      vm.routeModel.destinations = [null];
+      var allDestinationsList;
+      init();
+
+      function init(){
+        var promise = getDestinationsList();
+        promise.then(function(response){
+          allDestinationsList = response;
+          vm.allDestinations = allDestinationsList;
+          vm.destinations = [vm.allDestinations[0]];
+        });
+      };
+
+      vm.queryDestination = queryDestination;
+      vm.filterSelected = true;
+      /**
+       * Search for contacts.
+       */
+      function queryDestination (query) {
+        var results = query ?
+            vm.allDestinations.filter(createFilterFor(query)) : [];
+        return results;
+      }
+      /**
+       * Create filter function for a query string
+       */
+      function createFilterFor(query) {
+        var lowercaseQuery = angular.lowercase(query);
+        return function filterFn(contact) {
+          return (contact._lowername.indexOf(lowercaseQuery) != -1);;
+        };
+      }
 
   	  function answer(ans) {
   	    $mdDialog.hide(ans);
@@ -108,37 +132,31 @@
         $mdDialog.cancel();
       };
 
-      function confirmRoute(model){
-        var  a = 1;
-      };
-
-      function querySearch(query){
-        var promise = commonShareService.getDestination(query);
-        return promise.then(function(response){
-           return response;
-          });
-      };
-
-
       function getDestinationsList(){
         var promise = commonShareService.getDestination();
           return promise.then(function(response){
-           return response;
+           return response.map(function(item,index){
+              var contact = {
+                item: item,
+                destination: item.destination,
+                address: item.address,
+                image: 'images/dubai-img/'+item.photo,
+              };
+              contact._lowername = contact.destination.toLowerCase();
+              return contact;
+           });
           });
       };
 
-      function selectedDestinationChange(item, index){
-      };
+      // function addMoreDestination(){
+      //   vm.routeModel.destinations.push(null);
+      // };
 
-      function addMoreDestination(){
-        vm.routeModel.destinations.push(null);
-      };
-
-      function removeDestination(){
-        if(vm.routeModel.destinations.length > 1){
-          vm.routeModel.destinations.pop();
-        }
-      };
+      // function removeDestination(){
+      //   if(vm.routeModel.destinations.length > 1){
+      //     vm.routeModel.destinations.pop();
+      //   }
+      // };
 
 	};
 
