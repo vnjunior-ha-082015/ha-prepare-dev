@@ -16,13 +16,11 @@ angular.module('hackathonApp')
   	$scope.selectedCircle ;
     $scope.mySlides = [];
 
-  	commonShareService.getDestination().then(function(response){
-  		$scope.des = response;
-      for(var i = 0; i < response[0].photoList.length; i++){
-        $scope.mySlides.push({image:response[0].photoList[i], active:false});
-      }
-      $scope.mySlides[0].active = true;
-	});
+  	$scope.des = commonShareService.getDestination();
+    for(var i = 0; i < $scope.des[0].photoList.length; i++){
+      $scope.mySlides.push({image:$scope.des[0].photoList[i], active:false});
+    }
+    $scope.mySlides[0].active = true;
 
     $scope.select = function(id){
       $scope.mySlides = [];

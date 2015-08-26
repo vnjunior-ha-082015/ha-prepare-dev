@@ -1,4 +1,4 @@
-[
+var data_users = [
     {
         "id": 1,
         "firstName": "Dat",
@@ -26,8 +26,12 @@
         "username": "hien_pham",
         "avatarURL": "images/avatar/hien_pham.jpg",
         "pnr": "ABC002",
-        "routesCreated": [1],
-        "routesJoined": [1]
+        "routesCreated": [
+            1
+        ],
+        "routesJoined": [
+            1
+        ]
     },
     {
         "id": 4,
@@ -36,8 +40,12 @@
         "username": "hung_thai",
         "avatarURL": "images/avatar/hung_thai.jpg",
         "pnr": "ABC004",
-        "routesCreated": [2],
-        "routesJoined": [2]
+        "routesCreated": [
+            2
+        ],
+        "routesJoined": [
+            2
+        ]
     },
     {
         "id": 5,
@@ -46,7 +54,14 @@
         "username": "anh_diep",
         "avatarURL": "images/avatar/anh_diep.jpg",
         "pnr": "ABC005",
-        "routesCreated": [3,4],
-        "routesJoined": [3,4]
+        "routesCreated": [
+            3,
+            4
+        ],
+        "routesJoined": [
+            3,
+            4
+        ]
     }
 ]
+;

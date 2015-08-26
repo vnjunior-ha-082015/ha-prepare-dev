@@ -20,29 +20,24 @@
       init();
 
       function init(){
-        commonShareService.getRoutes().then(function(response){
-          vm.routes = response;
-          var a = 1;
-          //////////////
-          vm.selectedRoutes = angular.copy(vm.routes);
+        vm.routes = commonShareService.getRoutes();
+        //////////////
+        vm.selectedRoutes = angular.copy(vm.routes);
 
-          commonShareService.getDestination().then(function(response){
-            destinationList = response;
-            for(var k = 0; k < vm.selectedRoutes.length; k++){
-              for (var i = 0; i < vm.selectedRoutes[k].destinations.length; i++) {
-                for (var j = 0; j < destinationList.length; j++) {
-                  if (vm.selectedRoutes[k].destinations[i].locationId == destinationList[j].id) {
-                    vm.selectedRoutes[k].destinations[i].photo = "background-image : url('images/dubai-img/" + destinationList[j].photo + "');";
-                    vm.selectedRoutes[k].destinations[i].address = destinationList[j].address;
-                    vm.selectedRoutes[k].destinations[i].description = destinationList[j].description;
-                    vm.selectedRoutes[k].destinations[i].locationName = destinationList[j].destination;
-                    break;
-                  }
-                }
+        destinationList = commonShareService.getDestination();
+        for(var k = 0; k < vm.selectedRoutes.length; k++){
+          for (var i = 0; i < vm.selectedRoutes[k].destinations.length; i++) {
+            for (var j = 0; j < destinationList.length; j++) {
+              if (vm.selectedRoutes[k].destinations[i].locationId == destinationList[j].id) {
+                vm.selectedRoutes[k].destinations[i].photo = "background-image : url('images/dubai-img/" + destinationList[j].photo + "');";
+                vm.selectedRoutes[k].destinations[i].address = destinationList[j].address;
+                vm.selectedRoutes[k].destinations[i].description = destinationList[j].description;
+                vm.selectedRoutes[k].destinations[i].locationName = destinationList[j].destination;
+                break;
               }
             }
-          });
-        });
+          }
+        }
       }
 
       function createRoute(event){
@@ -96,12 +91,9 @@
       init();
 
       function init(){
-        var promise = getDestinationsList();
-        promise.then(function(response){
-          allDestinationsList = response;
-          vm.allDestinations = allDestinationsList;
-          vm.destinations = [vm.allDestinations[0]];
-        });
+        allDestinationsList = getDestinationsList();
+        vm.allDestinations = allDestinationsList;
+        vm.destinations = [vm.allDestinations[0]];
       };
 
       vm.queryDestination = queryDestination;
@@ -133,31 +125,17 @@
       };
 
       function getDestinationsList(){
-        var promise = commonShareService.getDestination();
-          return promise.then(function(response){
-           return response.map(function(item,index){
-              var contact = {
-                item: item,
-                destination: item.destination,
-                address: item.address,
-                image: 'images/dubai-img/'+item.photo,
-              };
-              contact._lowername = contact.destination.toLowerCase();
-              return contact;
-           });
-          });
+        return commonShareService.getDestination().map(function(item,index){
+          var contact = {
+            item: item,
+            destination: item.destination,
+            address: item.address,
+            image: 'images/dubai-img/'+item.photo,
+          };
+          contact._lowername = contact.destination.toLowerCase();
+          return contact;
+         });
       };
-
-      // function addMoreDestination(){
-      //   vm.routeModel.destinations.push(null);
-      // };
-
-      // function removeDestination(){
-      //   if(vm.routeModel.destinations.length > 1){
-      //     vm.routeModel.destinations.pop();
-      //   }
-      // };
-
 	};
 
 })();
