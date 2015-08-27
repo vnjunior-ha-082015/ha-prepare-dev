@@ -37,7 +37,7 @@
 
 
 
-
+      //Datetime picker object copy from angular-ui-bootstrap-datetimepicker documents
       vm.date = new Date();
       vm.minDate = vm.minDate ? null : new Date();
       vm.dateOptions = {
@@ -53,17 +53,10 @@
       };
 
 
-      $scope.$watch("date", function(value) {
-        console.log('New date value:' + value);
-      }, true);
-
-
-
       //========== Function declaration ====================
       function activate(){
         _allDestinationsList = getDestinationsList();
         vm.allDestinations = _allDestinationsList;
-        // vm.destinations = [vm.allDestinations[0]];
       };
 
       /**
