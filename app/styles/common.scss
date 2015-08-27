@@ -10,3 +10,14 @@ body .header{
     background-size: cover;
     min-height: calc(100% - 52px)
 }
+
+
+.success-message{
+    color: greeen;
+    font-weight: bold;
+}
+
+.error-message{
+    color: red;
+    font-weight: bold;
+}

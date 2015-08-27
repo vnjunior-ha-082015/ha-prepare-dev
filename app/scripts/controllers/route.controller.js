@@ -11,28 +11,68 @@
     RouteController.$inject = ['commonShareService', '$scope', '$mdDialog', '$rootScope'];
 
     function RouteController(commonShareService, $scope, $mdDialog, $rootScope){
-    	var vm = this;
-
-    	vm.createRoute = createRoute;
+    	var vm = this,
+        destinationList = [];
+      vm.routesCreated = [];
+      vm.routesJoined = [];
+      vm.createRoute = createRoute;
       vm.onCommentButton = onCommentButton;
-      var destinationList = [];
 
-      init();
+      activate();
 
-      function init(){
-        vm.routes = commonShareService.getRoutes();
-        //////////////
-        vm.selectedRoutes = angular.copy(vm.routes);
+      //==================== Function declaration ====================
+      function activate(){
+        $rootScope.activeTab = 'route';
+
+        getRoutesData();
 
         destinationList = commonShareService.getDestination();
-        for(var k = 0; k < vm.selectedRoutes.length; k++){
-          for (var i = 0; i < vm.selectedRoutes[k].destinations.length; i++) {
+
+        initRoutesProperty();
+      }
+
+      function getRoutesData(){
+        vm.currentUserInfo = commonShareService.getLoginInfo();
+        vm.routesData = commonShareService.getRoutes();
+        vm.routesData.reverse();
+        vm.routesData.forEach(function(route){
+          vm.currentUserInfo.routesCreated.forEach(function(routeId){
+            if(route.routeId == routeId){
+              vm.routesCreated.push(route);
+            }
+          });
+          vm.currentUserInfo.routesJoined.forEach(function(routeId){
+            if(route.routeId == routeId){
+              vm.routesJoined.push(route);
+            }
+          });
+        });
+        // vm.selectedRoutes = angular.copy(vm.routesData);
+      }
+
+      function initRoutesProperty(){
+        for(var k = 0; k < vm.routesCreated.length; k++){
+          for (var i = 0; i < vm.routesCreated[k].destinations.length; i++) {
             for (var j = 0; j < destinationList.length; j++) {
-              if (vm.selectedRoutes[k].destinations[i].locationId == destinationList[j].id) {
-                vm.selectedRoutes[k].destinations[i].photo = "background-image : url('images/dubai-img/" + destinationList[j].photo + "');";
-                vm.selectedRoutes[k].destinations[i].address = destinationList[j].address;
-                vm.selectedRoutes[k].destinations[i].description = destinationList[j].description;
-                vm.selectedRoutes[k].destinations[i].locationName = destinationList[j].destination;
+              if (vm.routesCreated[k].destinations[i].locationId == destinationList[j].id) {
+                vm.routesCreated[k].destinations[i].photo = "background-image : url('images/dubai-img/" + destinationList[j].photo + "');";
+                vm.routesCreated[k].destinations[i].address = destinationList[j].address;
+                vm.routesCreated[k].destinations[i].description = destinationList[j].description;
+                vm.routesCreated[k].destinations[i].locationName = destinationList[j].destination;
+                break;
+              }
+            }
+          }
+        }
+
+        for(var k = 0; k < vm.routesJoined.length; k++){
+          for (var i = 0; i < vm.routesJoined[k].destinations.length; i++) {
+            for (var j = 0; j < destinationList.length; j++) {
+              if (vm.routesJoined[k].destinations[i].locationId == destinationList[j].id) {
+                vm.routesJoined[k].destinations[i].photo = "background-image : url('images/dubai-img/" + destinationList[j].photo + "');";
+                vm.routesJoined[k].destinations[i].address = destinationList[j].address;
+                vm.routesJoined[k].destinations[i].description = destinationList[j].description;
+                vm.routesJoined[k].destinations[i].locationName = destinationList[j].destination;
                 break;
               }
             }
@@ -42,7 +82,7 @@
 
       function createRoute(event){
         $mdDialog.show({
-            controller: createRouteController,
+            controller: "CreateRouteController",
             controllerAs: "vm",
             templateUrl: 'views/create-route.html',
             parent: angular.element(document.body),
@@ -50,14 +90,16 @@
             clickOutsideToClose:false
           })
           .then(function(answer) {
-            $scope.status = 'You said the information was "' + answer + '".';
+            //Reload routes
+            getRoutesData();
+            initRoutesProperty();
           }, function() {
             $scope.status = 'You cancelled the dialog.';
           });
       };
 
-      function onCommentButton(index){
-        var currentTrip = vm.selectedRoutes[index];
+      function onCommentButton(currentTrip){
+        // var currentTrip = vm.selectedRoutes[index];
         if(currentTrip.activeComment && currentTrip.activeComment.length > 0){
           $rootScope.loginInfo = commonShareService.getLoginInfo();
           currentTrip.comments.push({
@@ -68,74 +110,6 @@
           currentTrip.activeComment = '';
         }
       }
-
-
-    };
-
-    function createRouteController(commonShareService, $scope, $mdDialog, $timeout, $q, $log) {
-      var vm = this;
-      vm.routeModel = {
-                        title: null,
-                        description: null,
-                        hostedBy: null,
-                        createDate: null,
-                        minimumCost: null,
-                        currency: null,
-                        totalJoined: 0,
-                        totalMember: 0,
-                        destinations: []
-                      };
-      vm.answer = answer;
-      vm.cancel = cancel;
-      var allDestinationsList;
-      init();
-
-      function init(){
-        allDestinationsList = getDestinationsList();
-        vm.allDestinations = allDestinationsList;
-        vm.destinations = [vm.allDestinations[0]];
-      };
-
-      vm.queryDestination = queryDestination;
-      vm.filterSelected = true;
-      /**
-       * Search for contacts.
-       */
-      function queryDestination (query) {
-        var results = query ?
-            vm.allDestinations.filter(createFilterFor(query)) : [];
-        return results;
-      }
-      /**
-       * Create filter function for a query string
-       */
-      function createFilterFor(query) {
-        var lowercaseQuery = angular.lowercase(query);
-        return function filterFn(contact) {
-          return (contact._lowername.indexOf(lowercaseQuery) != -1);;
-        };
-      }
-
-  	  function answer(ans) {
-  	    $mdDialog.hide(ans);
-  	  };
-
-      function cancel(){
-        $mdDialog.cancel();
-      };
-
-      function getDestinationsList(){
-        return commonShareService.getDestination().map(function(item,index){
-          var contact = {
-            item: item,
-            destination: item.destination,
-            address: item.address,
-            image: 'images/dubai-img/'+item.photo,
-          };
-          contact._lowername = contact.destination.toLowerCase();
-          return contact;
-         });
-      };
-	};
+    }
 
 })();

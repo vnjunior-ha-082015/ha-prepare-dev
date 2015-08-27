@@ -23,18 +23,22 @@
             setLoginInfo: setLoginInfo,
             getRoutes: getRoutes,
             setRoutes: setRoutes,
-            getDestination: getDestination
-
+            getDestination: getDestination,
+            getUsers: getUsers
         };
 
         //==================== Function declaration ====================
+
+        function getUsers(){
+          return angular.copy(data_users);
+        }
 
         function getLoginInfo(){
           if (!_loginInfo) {
             var param = $window.sessionStorage.loginInfo;
             _loginInfo = param ? JSON.parse(param) : undefined;
           }
-          return angular.copy(_loginInfo);
+          return _loginInfo;
         }
 
         function setLoginInfo(param){
@@ -49,7 +53,7 @@
         function getRoutes(){
           if (!_routes) {
             var value = $window.sessionStorage.routes;
-            _routes = value ? JSON.parse(value) : undefined;
+            _routes = value ? JSON.parse(value) : angular.copy(data_routes);
           }
           return _routes;
         }
@@ -60,11 +64,15 @@
               str = JSON.stringify(param);
           }
           _routes = param;
-          $window.sessionStorage.routes = str;
+          if(param === null){
+            $window.sessionStorage.removeItem('routes');
+          } else{
+            $window.sessionStorage.routes = str;
+          }
         }
 
         function getDestination(){
-          return angular.copy(data_Destinations);
+          return angular.copy(data_destinations);
         }
     }
 

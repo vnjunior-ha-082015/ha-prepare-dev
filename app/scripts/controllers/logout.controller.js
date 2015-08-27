@@ -10,7 +10,10 @@
 angular.module('hackathonApp')
   .controller('LogoutCtrl', function($scope, $rootScope, $state,$timeout, commonShareService ){
     commonShareService.setLoginInfo(null);
+    commonShareService.setRoutes(null);
     $rootScope.loginInfo = null;
+
+
     $timeout(function(){
         $state.go('dashboard');
     }, 1500);

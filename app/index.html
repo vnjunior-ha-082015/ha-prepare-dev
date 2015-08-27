@@ -9,6 +9,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/v-accordion/dist/v-accordion.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-bootstrap-datetimepicker/datetimepicker.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -23,6 +24,7 @@
      <!-- Angular Material CSS using GitCDN to load directly from `bower-material/master` -->
     <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" href="../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss">
+    <link rel="stylesheet" href="../bower_components/angular-ui-bootstrap-datetimepicker/datetimepicker.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
@@ -45,32 +47,32 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">The Anh's App</a>
+            <a class="navbar-brand" href="#/">FTPT App</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a ui-sref="home">Home</a></li>
-              <li><a ng-href="#/dashboard">dashboard</a></li>
-              <li><a ng-href="#/know-how">know-how</a></li>
-              <li><a ng-href="#/route">Manage route</a></li>
-              <li><a ng-href="#/logout"  ng-show="loginInfo.fullname.length > 0">Logout</a></li>
-              <li><a ng-href="#/test-skyscanner">Test Skyscanner</a></li>
+              <li ng-class="{'active': activeTab == 'login'}"
+                  ng-hide="loginInfo.username.length > 0">
+                  <a ng-href="#/">Login</a>
+              </li>
+              <li ng-class="{'active': activeTab == 'home'}"><a ui-sref="home">Home</a></li>
+              <li ng-class="{'active': activeTab == 'dashboard'}"><a ng-href="#/dashboard">dashboard</a></li>
+              <li ng-class="{'active': activeTab == 'route'}"
+                  ng-show="loginInfo.username.length > 0">
+                  <a ng-href="#/route">Manage route</a>
+              </li>
+              <li ng-class="{'active': activeTab == 'logout'}"
+                  ng-show="loginInfo.username.length > 0">
+                  <a ng-href="#/logout">Logout</a>
+              </li>
+              <li class="ng-hide"><a ng-href="#/test-skyscanner">Test Skyscanner</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#" ng-show="loginInfo.fullname.length > 0">Welcome {{loginInfo.fullname}}</a></li>
-              <!-- <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
-              </li> -->
+              <li><a href="#" ng-show="loginInfo.username.length > 0">Welcome {{loginInfo.firstName
+ + " " + lastName}}</a></li>
             </ul>
 
           </div>
@@ -117,7 +119,7 @@
     <!-- Angular Meterial dependencies -->
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
-
+    <script src="bower_components/angular-ui-bootstrap-datetimepicker/datetimepicker.js"></script>
 
     <!-- Angular Material Javascript now available via Google CDN; version 0.10 used here -->
     <script src="bower_components/angular-material/angular-material.js"></script>
@@ -134,11 +136,13 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/dashboard.controller.js"></script>
-        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/login.controller.js"></script>
+        <script src="scripts/controllers/login-dialog.controller.js"></script>
         <script src="scripts/controllers/logout.controller.js"></script>
         <script src="scripts/controllers/know-how.js"></script>
         <script src="scripts/controllers/home.controller.js"></script>
         <script src="scripts/controllers/route.controller.js"></script>
+        <script src="scripts/controllers/create-route.controller.js"></script>
         <script src="scripts/services/skyscanner-car-hire.service.js"></script>
         <script src="scripts/controllers/test-skyscanner.controller.js"></script>
 

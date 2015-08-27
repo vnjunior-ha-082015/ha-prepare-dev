@@ -1,4 +1,4 @@
-var data_Destinations = [
+var data_destinations = [
     {
         "id": 1,
         "destination": "Dubai Fountains",

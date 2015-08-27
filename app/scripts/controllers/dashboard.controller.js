@@ -17,12 +17,14 @@
           var vm = this;
           vm.message = 'Hellow Dashboard';
           vm.onCommentButton = onCommentButton;
+          vm.onJoinTrip = onJoinTrip;
           activate();
 
           //==================== Function declaration ====================
           function activate(){
+            $rootScope.activeTab = 'dashboard';
             vm.listTrips = commonShareService.getRoutes();
-
+            vm.listTrips.reverse();
             vm.destinationList = commonShareService.getDestination();
             for(var k = 0; k < vm.listTrips.length; k++){
               for (var i = 0; i < vm.listTrips[k].destinations.length; i++) {
@@ -58,51 +60,30 @@
             }
           }
 
+          function onJoinTrip(trip){
+            var loginInfo = commonShareService.getLoginInfo();
+            loginInfo.routesJoined.push(trip.routeId);
+            commonShareService.setLoginInfo(loginInfo);
+          }
+
           function login(event) {
             $mdDialog.show({
-              controller: DialogController,
-              templateUrl: 'views/login.tmpl.html',
+              controller: 'LoginDialogController',
+              controllerAs: 'vm',
+              templateUrl: 'views/login-dialog.tmpl.html',
               parent: angular.element(document.body),
               // targetEvent: event,
               clickOutsideToClose:true
             })
             .then(function(answer) {
               //Login success
-              $rootScope.loginInfo = commonShareService.getLoginInfo();
             }, function() {
               //Dialog was cancelled
             });
           };
     }
 
-    function DialogController($scope, $mdDialog, commonShareService) {
-      $scope.hide = function() {
-        $mdDialog.hide();
-      };
-      $scope.cancel = function() {
-        $mdDialog.cancel();
-      };
-      $scope.login = function() {
-        $scope.error = '';
-        var username = $scope.name.toLowerCase();
-        var pnr = $scope.pnr.toUpperCase();
-        if((username == 'dat_nguyen' && pnr == 'ABC001')
-          || (username == 'hien_pham' && pnr == 'ABC002')
-          || (username == 'luu_le' && pnr == 'ABC003')
-          || (username == 'hung_thai' && pnr == 'ABC004')
-          || (username == 'anh_diep' && pnr == 'ABC005')){
-          var fullname = username.replace(/-/g, ' ');
-          commonShareService.setLoginInfo({
-            fullname: fullname,
-            pnr: pnr,
-            avatarURL: 'images/avatar/'+ username +'.jpg'
-          });
-          $mdDialog.hide();
-        } else{
-          $scope.error = 'You enter wrong username and PNR';
-        }
-      };
-    }
+
 
 })();
 

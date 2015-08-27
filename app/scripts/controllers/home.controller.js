@@ -8,10 +8,9 @@
  * Controller of the hackathonApp
  */
  angular.module('hackathonApp')
- .controller('HomeController', function($scope, $compile, commonShareService){
+ .controller('HomeController', function($scope, $rootScope, $compile, commonShareService){
 
-  	// $scope.myInterval = false;
-  	// $scope.noWrapSlides = true;
+  	$rootScope.activeTab = 'home';
   	$scope.slides;
   	$scope.mySlides = [];
   	$scope.selectedCircle  = 1;
@@ -20,9 +19,9 @@
   		else return false;
   	}
   	$scope.des = commonShareService.getDestination();
-	for(var i = 0; i < $scope.des[0].photoList.length; i++){
-  		$scope.mySlides.push({image:$scope.des[0].photoList[i], active:false});
-	}
+  	for(var i = 0; i < $scope.des[0].photoList.length; i++){
+    		$scope.mySlides.push({image:$scope.des[0].photoList[i], active:false});
+  	}
   	$scope.mySlides[0].active = true;
   	$scope.description = $scope.des[0].description;
   	$scope.select = function(id){

@@ -19,7 +19,8 @@ angular
     'ngMaterial',
     'ui.router',
     'ui.bootstrap',
-    'vAccordion'
+    'vAccordion',
+    'ui.bootstrap.datetimepicker'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
@@ -29,26 +30,11 @@ angular
         templateUrl: 'views/home.html',
         controller: 'HomeController'
       })
-      .state('about',{
-        url: '/about',
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .state('yeo-page',{
-        url: '/yeo-page',
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
       .state('dashboard',{
         url: '/dashboard',
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl',
         controllerAs: 'vm'
-      })
-      .state('know-how',{
-        url: '/know-how',
-        templateUrl: 'views/know-how.html',
-        controller: 'KnowHowCtrl'
       })
       .state('route',{
         url: '/route',
@@ -58,8 +44,8 @@ angular
       })
       .state('login', {
         url: '/',
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl',
+        templateUrl: 'views/login.tmpl.html',
+        controller: 'LoginController',
         controllerAs: 'vm'
       })
       .state('logout', {
