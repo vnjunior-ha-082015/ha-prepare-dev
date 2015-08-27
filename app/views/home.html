@@ -41,8 +41,8 @@
 	<div class="content col-sm-5 col-md-5 col-lg-5">
 		<div id="carousel-section" style="height: 305px; width: 100%">
 			<carousel interval="5000" no-wrap="false">
-				<slide ng-repeat="slide in mySlides">
-					<img ng-src="{{slide.image}}" active="slide.active" width="600" height="300" style="margin:auto; height: 300px">
+				<slide ng-repeat="slide in selectedObj.photoList">
+					<img ng-src="{{slide}}" width="600" height="300" style="margin:auto; height: 300px">
 					<div class="carousel-caption">
 					</div>
 				</slide>
@@ -50,10 +50,11 @@
 		</div>
 		<div class="decription">
 			<div class="title">
-				THE SAHARA DESERT EXPERIENCE
+				<span> {{selectedObj.destination}}</span>
+				<!-- THE SAHARA DESERT EXPERIENCE -->
 			</div>
 			<div class="des">
-				{{description}}
+				{{selectedObj.description;}}
 				
 			</div>
 		</div>

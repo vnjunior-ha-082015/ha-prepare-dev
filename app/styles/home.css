@@ -38,11 +38,12 @@
 	-webkit-transform: scale(1.3);
         -ms-transform: scale(1.3);
         transform: scale(1.3);
+    z-index: 99999;
 }
 
 .circleSelected{
 	transition:all 0.2s ease;
-	box-shadow: inset 0 0 0 5px #53a7ea;
+	box-shadow: inset 0 0 0 3px #0D65DA;
 }
 
 .circle-matrix{
